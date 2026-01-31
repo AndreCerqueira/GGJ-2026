@@ -25,6 +25,7 @@ namespace Andre.Scripts
         [SerializeField] private Vector2Int _player1Coord = new Vector2Int(0, 0);
         [SerializeField] private Vector2Int _player2Coord = new Vector2Int(0, 1);
         [SerializeField] private Vector2Int _enemyCoord = new Vector2Int(6, 6);
+        private const int MIN_ENEMY_DISTANCE = 4;
 
         private const float _animDuration = 0.5f;
         private const float _delayStep = 0.05f;
@@ -71,8 +72,51 @@ namespace Andre.Scripts
             // Agora usamos os prefabs específicos para cada jogador
             SpawnAt(_player1Prefab, _player1Coord);
             SpawnAt(_player2Prefab, _player2Coord);
-            
+
+            PickEnemyCoord();
             SpawnAt(_enemyPrefab, _enemyCoord);
+        }
+
+        private void PickEnemyCoord()
+        {
+            const int maxAttempts = 100;
+            var attempts = 0;
+
+            while (attempts < maxAttempts)
+            {
+                var coord = new Vector2Int(
+                    Random.Range(0, _gridSize),
+                    Random.Range(0, _gridSize)
+                );
+
+                if (coord == _player1Coord || coord == _player2Coord)
+                {
+                    attempts++;
+                    continue;
+                }
+
+                if (GridDistance(coord, _player1Coord) < MIN_ENEMY_DISTANCE)
+                {
+                    attempts++;
+                    continue;
+                }
+
+                if (GridDistance(coord, _player2Coord) < MIN_ENEMY_DISTANCE)
+                {
+                    attempts++;
+                    continue;
+                }
+
+                _enemyCoord = coord;
+                return;
+            }
+
+            _enemyCoord = new Vector2Int(_gridSize - 1, _gridSize - 1);
+        }
+
+        private int GridDistance(Vector2Int a, Vector2Int b)
+        {
+            return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.y - b.y);
         }
 
         private void SpawnObstacles()
