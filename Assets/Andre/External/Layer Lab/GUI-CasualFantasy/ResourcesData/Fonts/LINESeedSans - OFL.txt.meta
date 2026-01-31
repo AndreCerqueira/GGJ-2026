@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 84995970e1d20534a944d6e58fc093e4
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265651
+  packageName: GUI - Casual Fantasy
+  packageVersion: 2.0.3
+  assetPath: Assets/Layer Lab/GUI-CasualFantasy/ResourcesData/Fonts/LINESeedSans
+    - OFL.txt
+  uploadId: 714409

@@ -5,24 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14477d0f-ba43-49a7-b3af-c22614c2b999" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Base.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Base/MaskEffect.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Base/MaskEffect.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Base/MaskEffectSystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Base/MaskEffectSystem.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Base/MaskInstance.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Base/MaskInstance.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/DraculaMaskEffect.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/DraculaMaskEffect.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/LogMaskEffect.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/LogMaskEffect.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/Mask.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/Mask.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Systems/AreaMovementSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Systems/AreaMovementSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Systems/MarkSpawnerSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Systems/MarkSpawnerSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +98,7 @@
       <option name="presentableId" value="Default" />
       <updated>1769808751583</updated>
       <workItem from="1769808751597" duration="52000" />
-      <workItem from="1769809018277" duration="12138000" />
+      <workItem from="1769809018277" duration="13111000" />
     </task>
     <servers />
   </component>
