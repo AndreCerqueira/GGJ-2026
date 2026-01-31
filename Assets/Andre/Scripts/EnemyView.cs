@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using Andre.Scripts.Systems;
 using DG.Tweening;
 using UnityEngine;
@@ -7,9 +8,17 @@ namespace Andre.Scripts
 {
     public class EnemyView : MonoBehaviour
     {
+        private AreaViewCreator areaViewCreator;
+        private List<GameObject> lockedSpacesAI = new();
+
         private const int MOVES_PER_TURN = 2;
         private const float MOVE_DURATION = 0.25f;
         private const float MOVE_DELAY = 0.1f;
+
+        private void Awake()
+        {
+            areaViewCreator = FindFirstObjectByType<AreaViewCreator>();
+        }
 
         private void OnEnable()
         {
@@ -41,6 +50,16 @@ namespace Andre.Scripts
 
             sequence.OnComplete(() =>
             {
+                foreach (var space in lockedSpacesAI)
+                {
+                    if (space != null)
+                    {
+                        space.transform.DOKill();
+                        Destroy(space);
+                    }
+                }
+                lockedSpacesAI.Clear();
+
                 if (gs != null) gs.CompleteTurnAction();
             });
         }
@@ -117,6 +136,19 @@ namespace Andre.Scripts
 
                 var dirY = new Vector2Int(0, System.Math.Sign(diff.y));
                 if (IsValidMove(current + dirY)) return dirY;
+
+                if (IsValidMove(current - dirY))
+                {
+                    LockSpaceAIMovement(current);
+
+                    return -dirY;
+                }
+
+                if (IsValidMove(current - dirX))
+                {
+                    LockSpaceAIMovement(current);
+                    return -dirX;
+                }
             }
             else
             {
@@ -125,16 +157,37 @@ namespace Andre.Scripts
 
                 var dirX = new Vector2Int(System.Math.Sign(diff.x), 0);
                 if (IsValidMove(current + dirX)) return dirX;
+
+                if (IsValidMove(current - dirX))
+                {
+                    LockSpaceAIMovement(current);
+                    return -dirX;
+                }
+
+                if (IsValidMove(current - dirY))
+                {
+                    LockSpaceAIMovement(current);
+                    return -dirY;
+                }
             }
 
             return Vector2Int.zero;
         }
 
+        private void LockSpaceAIMovement(Vector2Int currentCoord)
+        {
+            GameObject lockSpaceGO = new();
+            lockSpaceGO.AddComponent<ObstacleView>();
+
+            GameObject newLockSpaceGO = areaViewCreator.SpawnAt(lockSpaceGO, currentCoord);
+            lockedSpacesAI.Add(newLockSpaceGO);
+        }
+
         private bool IsValidMove(Vector2Int coord)
         {
-            if (!GridSystem.Instance.TryGetArea(coord, out var area)) 
+            if (!GridSystem.Instance.TryGetArea(coord, out var area))
                 return false;
-            
+
             return !IsBlockedByObstacle(area);
         }
 

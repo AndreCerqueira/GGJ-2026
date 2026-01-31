@@ -98,18 +98,20 @@ namespace Andre.Scripts
             }
         }
 
-        private void SpawnAt(GameObject prefab, Vector2Int coord)
+        public GameObject SpawnAt(GameObject prefab, Vector2Int coord)
         {
             if (prefab == null)
             {
                 Debug.LogWarning($"[AreaViewCreator] Prefab is missing for coord {coord}");
-                return;
+                return null;
             }
 
-            if (!GridSystem.Instance.TryGetArea(coord, out var targetArea)) return;
+            if (!GridSystem.Instance.TryGetArea(coord, out var targetArea)) return null;
 
             var entity = Instantiate(prefab, targetArea.CharacterContainer);
             AnimateSpawn(entity, coord.x, coord.y);
+
+            return entity;
         }
 
         private void AnimateSpawn(GameObject go, int x, int z)
