@@ -13,6 +13,7 @@ namespace Andre.Scripts
         [Header("Textures")]
         [SerializeField] private Texture _defaultTexture;
         [SerializeField] private Texture _highlightTexture;
+        [SerializeField] private Texture _selectedTexture;
         
         private Color _originalColor;
         private Vector2Int _coordinate;
@@ -21,11 +22,8 @@ namespace Andre.Scripts
         public Transform CharacterContainer => _characterContainer;
         public Transform MaskContainer => _maskContainer;
         public Vector2Int Coordinate => _coordinate;
-        
         public bool IsOccupied => _characterContainer.childCount > 0;
-        
         public bool HasObstacle => _characterContainer.GetComponentInChildren<ObstacleView>() != null;
-        
         public bool HasMask => _maskContainer.childCount > 0;
 
         private void Awake()
@@ -34,53 +32,39 @@ namespace Andre.Scripts
             UpdateTexture(false);
         }
 
-        public void Setup(Vector2Int coord)
-        {
-            _coordinate = coord;
-        }
+        public void Setup(Vector2Int coord) => _coordinate = coord;
 
-        public GameObject GetMask()
-        {
-            if (HasMask)
-            {
-                return _maskContainer.GetChild(0).gameObject;
-            }
-            return null;
-        }
+        public GameObject GetMask() => HasMask ? _maskContainer.GetChild(0).gameObject : null;
 
-        public void SetHighlight(bool active)
+        public void SetHighlight(bool active, bool isCurrentPos = false)
         {
             _blinkTween?.Kill();
             _renderer.material.color = _originalColor;
-            UpdateTexture(active);
-
+            
             if (active)
             {
+                _renderer.material.mainTexture = isCurrentPos ? _selectedTexture : _highlightTexture;
+                /*
                 _blinkTween = _renderer.material.DOColor(Color.cyan, 0.5f)
                     .SetLoops(-1, LoopType.Yoyo)
                     .SetEase(Ease.InOutSine);
+                    */
+            }
+            else
+            {
+                _renderer.material.mainTexture = _defaultTexture;
             }
         }
 
         private void UpdateTexture(bool isHighlight)
         {
             if (_renderer == null) return;
-
             var varTargetTexture = isHighlight ? _highlightTexture : _defaultTexture;
-            if (varTargetTexture != null)
-            {
-                _renderer.material.mainTexture = varTargetTexture;
-            }
+            if (varTargetTexture != null) _renderer.material.mainTexture = varTargetTexture;
         }
 
-        private void OnMouseDown()
-        {
-            AreaMovementSystem.Instance.OnAreaClicked(this);
-        }
+        private void OnMouseDown() => AreaMovementSystem.Instance.OnAreaClicked(this);
 
-        private void OnDestroy()
-        {
-            _blinkTween?.Kill();
-        }
+        private void OnDestroy() => _blinkTween?.Kill();
     }
 }
