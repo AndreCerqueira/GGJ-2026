@@ -249,6 +249,7 @@ GameObject:
   - component: {fileID: -4292168594558948166}
   - component: {fileID: 4145891118019084275}
   - component: {fileID: 2184003421727202170}
+  - component: {fileID: -388151133687883316}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -542,3 +543,15 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &-388151133687883316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312771916335996498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff51617ba3514dddb336b61fd7b98305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.PlayerMaskController

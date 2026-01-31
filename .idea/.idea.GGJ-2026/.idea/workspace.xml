@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14477d0f-ba43-49a7-b3af-c22614c2b999" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/PlayerMaskDisplayUI.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/PlayerMaskDisplayUI.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/PlayerMaskController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/PlayerMaskController.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Andre/AndreScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/AndreScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Data/DraculaMaskEffect.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Data/DraculaMaskEffect.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/Player1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Prefabs/Player1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/Player2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Prefabs/Player2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Base/MaskEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Base/MaskEffect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/PlayerMaskDisplayUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/PlayerMaskDisplayUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Systems/MarkSpawnerSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Systems/MarkSpawnerSystem.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,6 +34,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Base/PlayerMaskDisplay.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/DraculaMaskEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/LogMaskEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/PlayerMaskController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/PlayerMaskDisplayUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/MoveCounterViewUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/ObstacleView.cs" root0="FORCE_HIGHLIGHTING" />
@@ -127,7 +131,7 @@
       <workItem from="1769837393068" duration="3737000" />
       <workItem from="1769852998305" duration="9376000" />
       <workItem from="1769873119042" duration="4915000" />
-      <workItem from="1769882476612" duration="3758000" />
+      <workItem from="1769882476612" duration="6282000" />
     </task>
     <servers />
   </component>

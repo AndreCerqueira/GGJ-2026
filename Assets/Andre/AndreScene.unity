@@ -10038,6 +10038,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.UI.PlayerMaskDisplayUI
   _maskImage: {fileID: 63031476}
+  _counterContainer: {fileID: 2082809531}
+  _counterText: {fileID: 715386069}
   _playerId: 2
 --- !u!114 &63031476
 MonoBehaviour:
@@ -47225,14 +47227,13 @@ GameObject:
   - component: {fileID: 652946347}
   - component: {fileID: 652946346}
   - component: {fileID: 652946345}
-  - component: {fileID: 652946350}
   m_Layer: 5
   m_Name: Mask Turn Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &652946344
 RectTransform:
   m_ObjectHideFlags: 0
@@ -47377,18 +47378,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652946343}
   m_CullTransparentMesh: 0
---- !u!225 &652946350
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 652946343}
-  m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
 --- !u!1 &715386067
 GameObject:
   m_ObjectHideFlags: 0
@@ -71375,6 +71364,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.UI.PlayerMaskDisplayUI
   _maskImage: {fileID: 1801265540}
+  _counterContainer: {fileID: 652946343}
+  _counterText: {fileID: 437423751}
   _playerId: 1
 --- !u!1 &1803178191
 GameObject:
@@ -88378,14 +88369,13 @@ GameObject:
   - component: {fileID: 2082809535}
   - component: {fileID: 2082809534}
   - component: {fileID: 2082809533}
-  - component: {fileID: 2082809538}
   m_Layer: 5
   m_Name: Mask Turn Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2082809532
 RectTransform:
   m_ObjectHideFlags: 0
@@ -88530,18 +88520,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082809531}
   m_CullTransparentMesh: 0
---- !u!225 &2082809538
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082809531}
-  m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
 --- !u!1 &2088715029
 GameObject:
   m_ObjectHideFlags: 0

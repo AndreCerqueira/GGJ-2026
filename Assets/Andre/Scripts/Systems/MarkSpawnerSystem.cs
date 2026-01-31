@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Andre.Scripts.Masks.Base;
 using Andre.Scripts.Systems;
-using Andre.Scripts.UI;
 using UnityEngine;
 
 namespace Andre.Scripts
@@ -28,43 +27,26 @@ namespace Andre.Scripts
             }
         }
 
-        public void OnMaskPicked(GameObject mask, AreaView area)
+        public void OnMaskPicked(GameObject maskObject, AreaView area)
         {
-            var varMaskInstance = mask.GetComponent<MaskInstance>();
+            var varMaskInstance = maskObject.GetComponent<MaskInstance>();
+            var varPlayer = area.CharacterContainer.GetComponentInChildren<PlayerMaskController>();
     
             if (varMaskInstance != null && varMaskInstance.Effect != null)
             {
-                UpdatePlayerVisual(area, varMaskInstance.Effect.MaskSprite);
+                // Aplica o efeito imediato
                 MaskEffectSystem.Instance.TriggerEffect(varMaskInstance.Effect, area.gameObject);
-            }
 
-            _activeMasks.Remove(mask);
-            Destroy(mask);
-            SpawnNewMask();
-        }
-
-        private void UpdatePlayerVisual(AreaView area, Sprite maskSprite)
-        {
-            var varPlayer = area.CharacterContainer.GetComponentInChildren<PlayerView>();
-            if (varPlayer == null) return;
-
-            var varDisplay = varPlayer.GetComponentInChildren<PlayerMaskDisplay>();
-            if (varDisplay != null)
-            {
-                varDisplay.SetMask(maskSprite);
-            }
-
-            var varTargetId = varPlayer.gameObject.name.Contains("1") ? 1 : 2;
-            
-            var varUiDisplays = FindObjectsByType<PlayerMaskDisplayUI>(FindObjectsSortMode.None);
-            foreach (var varUiItem in varUiDisplays)
-            {
-                if (varUiItem.PlayerId == varTargetId)
+                // Equipa a máscara no jogador (lógica de duração)
+                if (varPlayer != null)
                 {
-                    varUiItem.SetMask(maskSprite);
-                    break;
+                    varPlayer.EquipMask(varMaskInstance.Effect);
                 }
             }
+
+            _activeMasks.Remove(maskObject);
+            Destroy(maskObject);
+            SpawnNewMask();
         }
 
         private void SpawnNewMask()
