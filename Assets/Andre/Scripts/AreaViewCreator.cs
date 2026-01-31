@@ -23,7 +23,7 @@ namespace Andre.Scripts
         private const float _animDuration = 0.5f;
         private const float _delayStep = 0.05f;
 
-        private void Start()
+        public void Initialize()
         {
             CreateGrid(); 
             SpawnEntities();
