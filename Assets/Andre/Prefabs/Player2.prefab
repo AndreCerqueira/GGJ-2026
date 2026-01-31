@@ -140,6 +140,9 @@ GameObject:
   - component: {fileID: -5933178380930780620}
   - component: {fileID: 2466242344302719271}
   - component: {fileID: 1520125776688177107}
+  - component: {fileID: 5451060311896641634}
+  - component: {fileID: 4643121429562178629}
+  - component: {fileID: 6779895079232148962}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -270,3 +273,54 @@ MonoBehaviour:
   _lives: 1
   _tombstonePrefab: {fileID: 7277841207646078753, guid: 9d970bf049d920b4bb846a5944c22057, type: 3}
   _playerPrefabForRespawn: {fileID: 6312771916335996498}
+--- !u!95 &5451060311896641634
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312771916335996498}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d01bbb267e6e7f24bb0c04a6427ca6a1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4643121429562178629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312771916335996498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeebd0c1d0da48b9a0943ce9f9c5230c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.PlayerRandomShake
+  _shakeTriggerName: Shake
+  _minTimeBetweenShakes: 2
+  _maxTimeBetweenShakes: 3
+--- !u!114 &6779895079232148962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312771916335996498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64aa6abbadf4769847e8d8d9827344c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Project.Runtime.Scripts.Animations.PingPongRotationUI
+  _rotationSpeed: 1
+  _rotationAngle: 1

@@ -141,6 +141,8 @@ GameObject:
   - component: {fileID: 2466242344302719271}
   - component: {fileID: 1520125776688177107}
   - component: {fileID: 6217700541371366121}
+  - component: {fileID: -4292168594558948166}
+  - component: {fileID: 4145891118019084275}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -293,3 +295,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4292168594558948166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312771916335996498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeebd0c1d0da48b9a0943ce9f9c5230c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.PlayerRandomShake
+  _shakeTriggerName: Shake
+  _minTimeBetweenShakes: 2
+  _maxTimeBetweenShakes: 3
+--- !u!114 &4145891118019084275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312771916335996498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64aa6abbadf4769847e8d8d9827344c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Project.Runtime.Scripts.Animations.PingPongRotationUI
+  _rotationSpeed: 1
+  _rotationAngle: 1
