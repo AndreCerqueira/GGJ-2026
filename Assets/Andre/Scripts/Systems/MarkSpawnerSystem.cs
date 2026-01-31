@@ -37,6 +37,7 @@ namespace Andre.Scripts
     
             if (varMaskInstance != null && varMaskInstance.Effect != null)
             {
+                Debug.Log($"[MaskSpawnerSystem] Player picked up mask with effect: {varMaskInstance.Effect.name}");
                 // Aplica o efeito imediato
                 MaskEffectSystem.Instance.TriggerEffect(varMaskInstance.Effect, area.gameObject);
 
@@ -66,7 +67,8 @@ namespace Andre.Scripts
             var varSelectedEffect = _maskEffects[varRandomEffectIndex];
 
             var varMask = Instantiate(_maskInstancePrefab, varTargetArea.MaskContainer);
-            _maskInstancePrefab.Setup(varSelectedEffect);
+            varMask.Setup(varSelectedEffect);
+            
             _activeMasks.Add(varMask.gameObject);
         }
 
