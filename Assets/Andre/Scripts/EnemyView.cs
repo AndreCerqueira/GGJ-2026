@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Andre.Scripts.Systems;
 using DG.Tweening;
 using UnityEngine;
@@ -56,7 +55,7 @@ namespace Andre.Scripts
 
             var currentCoord = currentArea.Coordinate;
             var targetCoord = targetPlayer.GetComponentInParent<AreaView>().Coordinate;
-            
+
             var direction = GetBestDirection(currentCoord, targetCoord);
             var nextCoord = currentCoord + direction;
 
@@ -68,6 +67,9 @@ namespace Andre.Scripts
 
         private void MoveToArea(AreaView targetArea)
         {
+            // Security check: if somehow we try to move to an obstacle, abort
+            if (IsBlockedByObstacle(targetArea)) return;
+
             if (targetArea.IsOccupied)
             {
                 var playersInArea = targetArea.CharacterContainer.GetComponentsInChildren<PlayerView>(true);
@@ -112,7 +114,7 @@ namespace Andre.Scripts
             {
                 var dirX = new Vector2Int(System.Math.Sign(diff.x), 0);
                 if (IsValidMove(current + dirX)) return dirX;
-                
+
                 var dirY = new Vector2Int(0, System.Math.Sign(diff.y));
                 if (IsValidMove(current + dirY)) return dirY;
             }
@@ -130,7 +132,18 @@ namespace Andre.Scripts
 
         private bool IsValidMove(Vector2Int coord)
         {
-            return GridSystem.Instance.TryGetArea(coord, out _);
+            if (!GridSystem.Instance.TryGetArea(coord, out var area)) 
+                return false;
+            
+            return !IsBlockedByObstacle(area);
+        }
+
+        private bool IsBlockedByObstacle(AreaView area)
+        {
+            if (!area.IsOccupied) return false;
+
+            var obstacle = area.CharacterContainer.GetComponentInChildren<ObstacleView>();
+            return obstacle != null;
         }
     }
 }
