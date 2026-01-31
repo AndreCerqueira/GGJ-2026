@@ -5,6 +5,9 @@ namespace Andre.Scripts
 {
     public class PlayerView : MonoBehaviour
     {
+        [SerializeField] private Light _playerLight;
+        public Light PlayerLight => _playerLight;
+        
         // Static registry of players to make checks easier at runtime
         public static System.Collections.Generic.List<PlayerView> AllPlayers { get; } = new System.Collections.Generic.List<PlayerView>();
 

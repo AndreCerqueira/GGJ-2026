@@ -345,6 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 316ac9eee5184d46bd046f4acdd256d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.PlayerView
+  _playerLight: {fileID: 2512900156216075599}
 --- !u!65 &2466242344302719271
 BoxCollider:
   m_ObjectHideFlags: 0
