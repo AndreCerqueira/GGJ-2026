@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14477d0f-ba43-49a7-b3af-c22614c2b999" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/Player1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Prefabs/Player1.prefab" afterDir="false" />
-    </list>
+    <list default="true" id="14477d0f-ba43-49a7-b3af-c22614c2b999" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +25,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/LogMaskEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/MoveCounterViewUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/ObstacleView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/PlayerRandomShake.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/PlayerView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Systems/GridSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Systems/MarkSpawnerSystem.cs" root0="FORCE_HIGHLIGHTING" />
@@ -58,6 +57,16 @@
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/Desktop/SHN_Exe\GGJ-2026.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\andre\Desktop\SHN_Exe" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.3.6f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Unity-Projects\GGJ-2026 -debugCodeOptimization" />
@@ -108,6 +117,7 @@
       <workItem from="1769837207704" duration="46000" />
       <workItem from="1769837393068" duration="3737000" />
       <workItem from="1769852998305" duration="9376000" />
+      <workItem from="1769873119042" duration="4915000" />
     </task>
     <servers />
   </component>

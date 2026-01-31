@@ -33,12 +33,26 @@ namespace Andre.Scripts
     
             if (varMaskInstance != null && varMaskInstance.Effect != null)
             {
+                UpdatePlayerVisual(area, varMaskInstance.Effect.MaskSprite);
                 MaskEffectSystem.Instance.TriggerEffect(varMaskInstance.Effect, area.gameObject);
             }
 
             _activeMasks.Remove(mask);
             Destroy(mask);
             SpawnNewMask();
+        }
+
+        private void UpdatePlayerVisual(AreaView area, Sprite maskSprite)
+        {
+            var varPlayer = area.CharacterContainer.GetComponentInChildren<PlayerView>();
+            if (varPlayer != null)
+            {
+                var varDisplay = varPlayer.GetComponentInChildren<PlayerMaskDisplay>();
+                if (varDisplay != null)
+                {
+                    varDisplay.SetMask(maskSprite);
+                }
+            }
         }
 
         private void SpawnNewMask()
