@@ -20,7 +20,7 @@ namespace Andre.Scripts.Systems
         public void Awake()
         {
             Instance = this;
-            // Try to cache GameSystem reference; if it's not ready, register to get it when initialized
+            // Tenta cachear a referência; se não estiver pronta, registra para pegar na inicialização
             _gameSystem = GameSystem.GetOrFindInstance();
             if (_gameSystem == null)
             {
@@ -30,6 +30,9 @@ namespace Andre.Scripts.Systems
 
         public void SelectPlayer(PlayerView player)
         {
+            // Impede selecionar se não for o turno do jogador
+            if (_gameSystem != null && _gameSystem.state != GameState.PLAYERTURN) return;
+
             ClearHighlights();
             _selectedPlayer = player;
             
@@ -85,14 +88,13 @@ namespace Andre.Scripts.Systems
                 {
                     TryPickMask(area);
             
-                    // Verifica se o turno acabou
+                    // ALTERAÇÃO AQUI: 
+                    // Se acabaram os movimentos, apenas deselecionamos. 
+                    // NÃO chamamos mais o EnemyTurn automaticamente.
                     if (playerMoves <= 0)
                     {
-                        // Acabaram os movimentos: Passa o turno
                         _selectedPlayer = null;
-                        playerMoves = 3; // Reset para o próximo turno
-                
-                        if (gs != null) gs.EnemyTurn();
+                        ClearHighlights();
                     }
                     else
                     {
@@ -100,6 +102,26 @@ namespace Andre.Scripts.Systems
                         ShowAdjacentAreas(area.Coordinate);
                     }
                 });
+        }
+
+        /// <summary>
+        /// Chamado pelo botão de UI para encerrar o turno manualmente.
+        /// </summary>
+        public void PassTurnManual()
+        {
+            var gs = _gameSystem ?? GameSystem.GetOrFindInstance();
+
+            // Segurança: Só passa o turno se for realmente a vez do jogador
+            if (gs != null && gs.state != GameState.PLAYERTURN) return;
+
+            _selectedPlayer = null;
+            ClearHighlights();
+            
+            // Reseta os movimentos para o próximo turno
+            playerMoves = 3; 
+
+            Debug.Log("[AreaMovementSystem] Turno passado manualmente via botão.");
+            if (gs != null) gs.EnemyTurn();
         }
 
         private void TryPickMask(AreaView area)

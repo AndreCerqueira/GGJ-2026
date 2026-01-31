@@ -1,7 +1,9 @@
 using System;
 using UnityEngine;
 // Certifica-te de que o PlayerView está acessível (namespace correto)
-using Andre.Scripts; 
+using Andre.Scripts;
+using Andre.Scripts.Toasts;
+using Andre.Scripts.UI;
 
 public enum GameState
 {
@@ -19,10 +21,15 @@ public class GameSystem : MonoBehaviour
 {
     public static GameSystem Instance { get; private set; }
 
+    public static event Action OnPlayerTurn;
     public static event System.Action OnEnemyTurn;
     private int _pendingTurnActions = 0;
     [SerializeField] private float _turnStartDelay = 0.15f;
     [SerializeField] private float _turnEndDelay = 0.15f;
+    
+    [Header("Toast Presets")]
+    [SerializeField] private ToastPresetSO _playerTurnPreset;
+    [SerializeField] private ToastPresetSO _enemyTurnPreset;
 
     public static GameSystem GetOrFindInstance()
     {
@@ -85,8 +92,19 @@ public class GameSystem : MonoBehaviour
 
     public void PlayerTurn()
     {
+        if (state == GameState.EVENTS)
+        {
+            if (Andre.Scripts.UI.ToastSystem.Instance != null)
+            {
+                Andre.Scripts.UI.ToastSystem.Instance.Show("Your Turn", _playerTurnPreset);
+            }
+        }
+
         state = GameState.PLAYERTURN;
         Debug.Log("Player's Turn!");
+        
+        // Dispara o evento para desbloquear os botões
+        OnPlayerTurn?.Invoke();
     }
 
     public void EnemyTurn()
@@ -99,6 +117,7 @@ public class GameSystem : MonoBehaviour
         Debug.Log($"[GameSystem] EnemyTurnRoutine() starting (current state: {state})");
         state = GameState.ENEMYTURN;
         Debug.Log("Enemy's Turn!");
+        ToastSystem.Instance.Show("Enemy Turn", _enemyTurnPreset);
 
         if (_turnStartDelay > 0f) yield return new WaitForSeconds(_turnStartDelay);
 
