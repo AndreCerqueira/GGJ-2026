@@ -28,6 +28,18 @@ namespace Andre.Scripts
             CreateGrid(); 
             SpawnEntities();
             MaskSpawnerSystem.Instance.SpawnInitialMasks();
+
+            // Start the game after all areas, entities and masks have been spawned.
+            // If GameSystem isn't initialized yet, register to start once it is.
+            var gs = GameSystem.GetOrFindInstance();
+            if (gs == null)
+            {
+                GameSystem.RegisterOnInitialized(() => GameSystem.Instance.StartGame());
+            }
+            else
+            {
+                gs.StartGame();
+            }
         }
 
         private void CreateGrid()
@@ -56,12 +68,13 @@ namespace Andre.Scripts
             SpawnAt(_enemyPrefab, _enemyCoord);
         }
 
-        private void SpawnAt(GameObject prefab, Vector2Int coord)
+        public void SpawnAt(GameObject prefab, Vector2Int coord)
         {
             if (!GridSystem.Instance.TryGetArea(coord, out var targetArea)) return;
 
+            Debug.Log($"Spawning prefab '{prefab.name}' at {coord} -> area '{targetArea.name}'");
             var entity = Instantiate(prefab, targetArea.CharacterContainer);
-            
+
             AnimateSpawn(entity, coord.x, coord.y);
         }
 

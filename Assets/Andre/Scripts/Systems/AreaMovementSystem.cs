@@ -8,14 +8,24 @@ namespace Andre.Scripts.Systems
     {
         public static AreaMovementSystem Instance { get; private set; }
 
+        private GameSystem _gameSystem;
+
         private PlayerView _selectedPlayer;
         private List<AreaView> _highlightedAreas = new List<AreaView>();
 
+        public int playerMoves = 3;
+
         private const float _moveDuration = 0.3f;
 
-        private void Awake()
+        public void Awake()
         {
             Instance = this;
+            // Try to cache GameSystem reference; if it's not ready, register to get it when initialized
+            _gameSystem = GameSystem.GetOrFindInstance();
+            if (_gameSystem == null)
+            {
+                GameSystem.RegisterOnInitialized(() => { _gameSystem = GameSystem.Instance; });
+            }
         }
 
         public void SelectPlayer(PlayerView player)
@@ -24,7 +34,7 @@ namespace Andre.Scripts.Systems
             _selectedPlayer = player;
             
             var currentArea = player.GetComponentInParent<AreaView>();
-            if (currentArea != null)
+            if (currentArea != null && playerMoves > 0)
             {
                 ShowAdjacentAreas(currentArea.Coordinate);
             }
@@ -54,7 +64,9 @@ namespace Andre.Scripts.Systems
 
         public void MovePlayerToArea(AreaView area)
         {
-            var playerTransform = _selectedPlayer.transform;
+            for (var i = 0; i < playerMoves; i++)
+            {
+                var playerTransform = _selectedPlayer.transform;
             
             playerTransform.SetParent(area.CharacterContainer);
             playerTransform.DOLocalMove(Vector3.zero, _moveDuration)
@@ -63,6 +75,20 @@ namespace Andre.Scripts.Systems
 
             ClearHighlights();
             _selectedPlayer = null;
+            playerMoves -= 1;
+            }
+
+           // Debug.Log("[AreaMovementSystem] MovePlayerToArea completed - attempting to call EnemyTurn()");
+            // Prefer cached reference
+            var gs = _gameSystem ?? GameSystem.GetOrFindInstance();
+            if (gs == null)
+            {
+               // Debug.LogError("[AreaMovementSystem] No GameSystem found in scene. EnemyTurn not called.");
+                return;
+            }
+
+            //Debug.Log("[AreaMovementSystem] Calling GameSystem.Instance.EnemyTurn()");
+            gs.EnemyTurn();
         }
 
         private void TryPickMask(AreaView area)
