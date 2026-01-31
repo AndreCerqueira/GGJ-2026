@@ -8,7 +8,8 @@ namespace Andre.Scripts
     {
         [Header("Prefabs")]
         [SerializeField] private AreaView _areaPrefab;
-        [SerializeField] private GameObject _playerPrefab;
+        [SerializeField] private GameObject _player1Prefab;
+        [SerializeField] private GameObject _player2Prefab;
         [SerializeField] private GameObject _enemyPrefab;
 
         [Header("Grid Settings")]
@@ -63,8 +64,8 @@ namespace Andre.Scripts
 
         private void SpawnEntities()
         {
-            SpawnAt(_playerPrefab, _player1Coord);
-            SpawnAt(_playerPrefab, _player2Coord);
+            SpawnAt(_player1Prefab, _player1Coord);
+            SpawnAt(_player2Prefab, _player2Coord);
             SpawnAt(_enemyPrefab, _enemyCoord);
         }
 

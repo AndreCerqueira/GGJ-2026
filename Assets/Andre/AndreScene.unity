@@ -194,7 +194,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -73463410, guid: 2f327f71c55ec3840954d45895fc2eb7, type: 3}
+  m_Sprite: {fileID: -443401161, guid: d42cbd468420113469538e26d9d76c63, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1298,9 +1298,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.World.AreaViewCreator
   _areaPrefab: {fileID: -2792115933525323744, guid: 625d74981bf5d63469c0932cefd8ce6a, type: 3}
-  _playerPrefab: {fileID: 6312771916335996498, guid: c754d745f678ff14783554529f0ea06e, type: 3}
+  _player1Prefab: {fileID: 6312771916335996498, guid: c754d745f678ff14783554529f0ea06e, type: 3}
+  _player2Prefab: {fileID: 6312771916335996498, guid: e5ede71f4335d9048a0675c5c1f422c5, type: 3}
   _enemyPrefab: {fileID: 6312771916335996498, guid: 37481bea4f7e39e4a90a38831a4b1336, type: 3}
-  _gridSize: 7
+  _gridSize: 9
   _spacing: 1
   _player1Coord: {x: 1, y: 0}
   _player2Coord: {x: 0, y: 1}
@@ -1314,7 +1315,7 @@ Transform:
   m_GameObject: {fileID: 402353269}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.89394, y: 10.32999, z: 22.9259}
+  m_LocalPosition: {x: 7.07, y: 10.32999, z: 22.9259}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
