@@ -64,39 +64,42 @@ namespace Andre.Scripts.Systems
 
         public void MovePlayerToArea(AreaView area)
         {
-            var moves = playerMoves;
+            // 1. Verifica se temos jogador selecionado
+            if (_selectedPlayer == null) return;
+
             var gs = _gameSystem ?? GameSystem.GetOrFindInstance();
-    
-            var playerToMove = _selectedPlayer;
-            if (playerToMove == null) return;
 
-            // 2. Limpa os destaques e a seleção da classe IMEDIATAMENTE
+            // 2. Limpa os highlights antigos
             ClearHighlights();
-            _selectedPlayer = null;
-            playerMoves = 3; // Reset do contador de movimentos
 
-            for (var i = 0; i < moves; i++)
-            {
-                var playerTransform = playerToMove.transform;
-                playerTransform.SetParent(area.CharacterContainer);
+            // 3. Move o jogador para o novo contentor
+            _selectedPlayer.transform.SetParent(area.CharacterContainer);
 
-                if (i == moves - 1)
+            // 4. Consome 1 movimento
+            playerMoves--;
+
+            // 5. Animação do movimento
+            _selectedPlayer.transform.DOLocalMove(Vector3.zero, _moveDuration)
+                .SetEase(Ease.OutQuad)
+                .OnComplete(() =>
                 {
-                    playerTransform.DOLocalMove(Vector3.zero, _moveDuration)
-                        .SetEase(Ease.OutQuad)
-                        .OnComplete(() =>
-                        {
-                            TryPickMask(area);
-                            if (gs != null) gs.EnemyTurn();
-                        });
-                }
-                else
-                {
-                    playerTransform.DOLocalMove(Vector3.zero, _moveDuration)
-                        .SetEase(Ease.OutQuad)
-                        .OnComplete(() => TryPickMask(area));
-                }
-            }
+                    TryPickMask(area);
+            
+                    // Verifica se o turno acabou
+                    if (playerMoves <= 0)
+                    {
+                        // Acabaram os movimentos: Passa o turno
+                        _selectedPlayer = null;
+                        playerMoves = 3; // Reset para o próximo turno
+                
+                        if (gs != null) gs.EnemyTurn();
+                    }
+                    else
+                    {
+                        // Ainda tem movimentos: Atualiza os highlights para a nova posição
+                        ShowAdjacentAreas(area.Coordinate);
+                    }
+                });
         }
 
         private void TryPickMask(AreaView area)

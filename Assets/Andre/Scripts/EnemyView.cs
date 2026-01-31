@@ -1,4 +1,6 @@
-﻿using Andre.Scripts.Systems;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Andre.Scripts.Systems;
 using DG.Tweening;
 using UnityEngine;
 
@@ -6,10 +8,9 @@ namespace Andre.Scripts
 {
     public class EnemyView : MonoBehaviour
     {
-        // Direction in grid coordinates (right/left)
-        private Vector2Int _direction = Vector2Int.right;
-        private int _consecutiveMoves = 0;
-        private const int MovesBeforeFlip = 4;
+        private const int MOVES_PER_TURN = 2;
+        private const float MOVE_DURATION = 0.25f;
+        private const float MOVE_DELAY = 0.1f;
 
         private void OnEnable()
         {
@@ -23,69 +24,113 @@ namespace Andre.Scripts
 
         private void OnEnemyTurn()
         {
-            // Move one tile in current direction each enemy turn.
-            TryMoveOneTile();
+            PerformTurnSequence();
+        }
 
-            _consecutiveMoves++;
-            if (_consecutiveMoves >= MovesBeforeFlip)
+        private void PerformTurnSequence()
+        {
+            var gs = GameSystem.GetOrFindInstance();
+            if (gs != null) gs.RegisterTurnAction();
+
+            var sequence = DOTween.Sequence();
+
+            for (var i = 0; i < MOVES_PER_TURN; i++)
             {
-                _consecutiveMoves = 1;
-                _direction = new Vector2Int(-_direction.x, -_direction.y); // flip horizontal/vertical
+                sequence.AppendCallback(() => MoveTowardsNearestPlayer());
+                sequence.AppendInterval(MOVE_DURATION + MOVE_DELAY);
+            }
+
+            sequence.OnComplete(() =>
+            {
+                if (gs != null) gs.CompleteTurnAction();
+            });
+        }
+
+        private void MoveTowardsNearestPlayer()
+        {
+            var currentArea = GetComponentInParent<AreaView>();
+            if (currentArea == null) return;
+
+            var targetPlayer = GetNearestPlayer(currentArea.Coordinate);
+            if (targetPlayer == null) return;
+
+            var currentCoord = currentArea.Coordinate;
+            var targetCoord = targetPlayer.GetComponentInParent<AreaView>().Coordinate;
+            
+            var direction = GetBestDirection(currentCoord, targetCoord);
+            var nextCoord = currentCoord + direction;
+
+            if (GridSystem.Instance.TryGetArea(nextCoord, out var nextArea))
+            {
+                MoveToArea(nextArea);
             }
         }
 
-        private void TryMoveOneTile()
+        private void MoveToArea(AreaView targetArea)
         {
-            var currentArea = GetComponentInParent<AreaView>();
-            if (currentArea == null)
-            {
-                Debug.LogWarning($"[EnemyView] {gameObject.name} not parented under an AreaView; can't move.");
-                return;
-            }
-
-            var targetCoord = currentArea.Coordinate + _direction;
-            if (!GridSystem.Instance.TryGetArea(targetCoord, out var targetArea))
-            {
-                // If target out of bounds, flip direction and try the other way
-                _direction = new Vector2Int(-_direction.x, -_direction.y);
-                targetCoord = currentArea.Coordinate + _direction;
-                if (!GridSystem.Instance.TryGetArea(targetCoord, out targetArea))
-                {
-                    Debug.LogWarning($"[EnemyView] {gameObject.name} cannot move in either direction from {currentArea.name}.");
-                    return;
-                }
-            }
-
-            // If there are players in the target area, kill them first (handles cases where physics collisions don't fire)
             if (targetArea.IsOccupied)
             {
-                var playersInArea = targetArea.CharacterContainer.GetComponentsInChildren<Andre.Scripts.PlayerView>(true);
+                var playersInArea = targetArea.CharacterContainer.GetComponentsInChildren<PlayerView>(true);
                 foreach (var p in playersInArea)
                 {
                     var hs = p.GetComponent<HealthSystem>();
-                    if (hs != null)
-                    {
-                        Debug.Log($"[EnemyView] {gameObject.name} killing player {p.gameObject.name} in {targetArea.name}");
-                        hs.Kill();
-                    }
+                    if (hs != null) hs.Kill();
                 }
             }
 
-            // Reparent and animate to center
             transform.SetParent(targetArea.CharacterContainer);
+            transform.DOLocalMove(Vector3.zero, MOVE_DURATION).SetEase(Ease.OutQuad);
+        }
 
-            var gs = GameSystem.GetOrFindInstance();
-            if (gs != null)
+        private PlayerView GetNearestPlayer(Vector2Int currentCoord)
+        {
+            PlayerView nearest = null;
+            var minDistance = float.MaxValue;
+
+            foreach (var player in PlayerView.AllPlayers)
             {
-                gs.RegisterTurnAction();
+                var playerArea = player.GetComponentInParent<AreaView>();
+                if (playerArea == null) continue;
+
+                var dist = Vector2Int.Distance(currentCoord, playerArea.Coordinate);
+                if (dist < minDistance)
+                {
+                    minDistance = dist;
+                    nearest = player;
+                }
             }
 
-            transform.DOLocalMove(Vector3.zero, 0.25f).SetEase(Ease.OutQuad)
-                .OnComplete(() =>
-                {
-                    Debug.Log($"[EnemyView] {gameObject.name} moved to {targetArea.name} at {targetCoord}");
-                    if (gs != null) gs.CompleteTurnAction();
-                });
+            return nearest;
+        }
+
+        private Vector2Int GetBestDirection(Vector2Int current, Vector2Int target)
+        {
+            var diff = target - current;
+            var tryHorizontal = Mathf.Abs(diff.x) > Mathf.Abs(diff.y);
+
+            if (tryHorizontal)
+            {
+                var dirX = new Vector2Int(System.Math.Sign(diff.x), 0);
+                if (IsValidMove(current + dirX)) return dirX;
+                
+                var dirY = new Vector2Int(0, System.Math.Sign(diff.y));
+                if (IsValidMove(current + dirY)) return dirY;
+            }
+            else
+            {
+                var dirY = new Vector2Int(0, System.Math.Sign(diff.y));
+                if (IsValidMove(current + dirY)) return dirY;
+
+                var dirX = new Vector2Int(System.Math.Sign(diff.x), 0);
+                if (IsValidMove(current + dirX)) return dirX;
+            }
+
+            return Vector2Int.zero;
+        }
+
+        private bool IsValidMove(Vector2Int coord)
+        {
+            return GridSystem.Instance.TryGetArea(coord, out _);
         }
     }
 }

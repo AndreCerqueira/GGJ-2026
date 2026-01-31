@@ -989,6 +989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37af1997c92480996878bf30fabcc5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.AreaMovementSystem
+  playerMoves: 3
 --- !u!4 &317437777
 Transform:
   m_ObjectHideFlags: 0
@@ -1679,6 +1680,7 @@ GameObject:
   - component: {fileID: 607466018}
   - component: {fileID: 607466020}
   - component: {fileID: 607466019}
+  - component: {fileID: 607466021}
   m_Layer: 5
   m_Name: Move Counter
   m_TagString: Untagged
@@ -1744,6 +1746,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 607466017}
   m_CullTransparentMesh: 1
+--- !u!114 &607466021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607466017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81903e6414443ba9310b3aea8b5b093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.MoveCounterViewUI
+  _movesText: {fileID: 1791581691}
+  _prefix: 'Moves: '
 --- !u!1 &681203479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1802,7 +1818,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <shake a=0.2 f=0.2>[INSERT GAME NAME]</shake>
+  m_text: <shake a=0.2 f=0.2>Survive Halloween Night</shake>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f51660f74d788d4b8ab16a55e7e28ca, type: 2}
   m_sharedMaterial: {fileID: -403277894513911722, guid: 8f51660f74d788d4b8ab16a55e7e28ca, type: 2}
@@ -1829,7 +1845,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 82.2
+  m_fontSize: 77.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2106,6 +2122,53 @@ Transform:
   - {fileID: 549175897}
   - {fileID: 1758384346}
   m_Father: {fileID: 287157618}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &845604676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 845604678}
+  - component: {fileID: 845604677}
+  m_Layer: 0
+  m_Name: GameSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &845604677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845604676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4642d3af6be32bd448118b33d04b2008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameSystem
+  _turnStartDelay: 0.15
+  _turnEndDelay: 0.15
+  state: 0
+--- !u!4 &845604678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845604676}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 448.70016, y: 0, z: -381.4791}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &863838527
 GameObject:
@@ -6158,7 +6221,7 @@ MonoBehaviour:
         Owner: {fileID: 1974294409}
         DebugActive: 0
         LoadingSceneName: MMAdditiveLoadingScreenFastFade
-        DestinationSceneName: AndreScene
+        DestinationSceneName: SampleScene
         LoadingMode: 2
         Priority: 4
         SecureLoad: 1
@@ -7167,3 +7230,4 @@ SceneRoots:
   - {fileID: 1991578685}
   - {fileID: 1995901900}
   - {fileID: 2088715031}
+  - {fileID: 845604678}
