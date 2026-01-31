@@ -52,7 +52,7 @@ namespace Andre.Scripts.Systems
             MovePlayerToArea(area);
         }
 
-        private void MovePlayerToArea(AreaView area)
+        public void MovePlayerToArea(AreaView area)
         {
             var playerTransform = _selectedPlayer.transform;
             

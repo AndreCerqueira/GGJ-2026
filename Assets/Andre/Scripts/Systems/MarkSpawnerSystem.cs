@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Andre.Scripts.Masks;
+using Andre.Scripts.Masks.Base;
 using Andre.Scripts.Systems;
 using UnityEngine;
 
@@ -28,6 +30,13 @@ namespace Andre.Scripts
 
         public void OnMaskPicked(GameObject mask, AreaView area)
         {
+            var varMaskInstance = mask.GetComponent<MaskInstance>();
+    
+            if (varMaskInstance != null && varMaskInstance.Effect != null)
+            {
+                MaskEffectSystem.Instance.TriggerEffect(varMaskInstance.Effect, area.gameObject);
+            }
+
             _activeMasks.Remove(mask);
             Destroy(mask);
             SpawnNewMask();
