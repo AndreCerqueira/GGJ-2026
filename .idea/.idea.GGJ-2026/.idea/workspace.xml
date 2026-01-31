@@ -5,18 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14477d0f-ba43-49a7-b3af-c22614c2b999" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/JackOLanternEffect.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/JackOLanternEffect.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Andre/AndreScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/AndreScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/Player1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Prefabs/Player1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/Player2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Prefabs/Player2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/DraculaMaskEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/DraculaMaskEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/DraculaMaskEffect.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/DraculaMaskEffect.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/LogMaskEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/LogMaskEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/LogMaskEffect.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/LogMaskEffect.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/PlayerView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/PlayerView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/AreaViewDefault.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Prefabs/AreaViewDefault.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/Masks/MaskDracula.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/Masks/MaskDracula.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/Masks/MaskJack.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/Masks/MaskJack.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/Masks/MaskLog.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/Masks/MaskLog.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Base/MaskInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Base/MaskInstance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Systems/MarkSpawnerSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Systems/MarkSpawnerSystem.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +132,7 @@
       <workItem from="1769837393068" duration="3737000" />
       <workItem from="1769852998305" duration="9376000" />
       <workItem from="1769873119042" duration="4915000" />
-      <workItem from="1769882476612" duration="7293000" />
+      <workItem from="1769882476612" duration="9905000" />
     </task>
     <servers />
   </component>

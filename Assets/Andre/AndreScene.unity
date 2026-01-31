@@ -16255,8 +16255,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b2299e31f94607aabb3d6a5f767207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.Systems.MaskSpawnerSystem
-  _maskPrefabs:
-  - {fileID: 6742192194321614249, guid: adcaf6766843a134ba0eeed3595808ef, type: 3}
+  _maskInstancePrefab: {fileID: 8794448708385115262, guid: f8e9380880259a24aa9890fb25a25993, type: 3}
+  _maskEffects:
+  - {fileID: 11400000, guid: c9825512955bc5f49835dc091c594264, type: 2}
+  - {fileID: 11400000, guid: 0f3500be98660ad4b8074aca51a7870a, type: 2}
   _maxMasks: 5
 --- !u!1 &278255091
 GameObject:

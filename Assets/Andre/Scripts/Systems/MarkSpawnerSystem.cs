@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Andre.Scripts.Masks.Base;
 using Andre.Scripts.Systems;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Andre.Scripts
@@ -8,8 +9,10 @@ namespace Andre.Scripts
     public class MaskSpawnerSystem : MonoBehaviour
     {
         public static MaskSpawnerSystem Instance { get; private set; }
+        
+        [SerializeField] private MaskInstance _maskInstancePrefab;
 
-        [SerializeField] private List<GameObject> _maskPrefabs;
+        [SerializeField] private List<MaskEffect> _maskEffects;
         [SerializeField] private int _maxMasks = 3;
 
         private List<GameObject> _activeMasks = new List<GameObject>();
@@ -51,7 +54,7 @@ namespace Andre.Scripts
 
         private void SpawnNewMask()
         {
-            if (_maskPrefabs == null || _maskPrefabs.Count == 0) return;
+            if (_maskEffects == null || _maskEffects.Count == 0) return;
 
             var varAvailableAreas = GetValidSpawnAreas();
             if (varAvailableAreas.Count == 0) return;
@@ -59,11 +62,12 @@ namespace Andre.Scripts
             var varRandomAreaIndex = Random.Range(0, varAvailableAreas.Count);
             var varTargetArea = varAvailableAreas[varRandomAreaIndex];
 
-            var varRandomPrefabIndex = Random.Range(0, _maskPrefabs.Count);
-            var varSelectedPrefab = _maskPrefabs[varRandomPrefabIndex];
+            var varRandomEffectIndex = Random.Range(0, _maskEffects.Count);
+            var varSelectedEffect = _maskEffects[varRandomEffectIndex];
 
-            var varMask = Instantiate(varSelectedPrefab, varTargetArea.MaskContainer);
-            _activeMasks.Add(varMask);
+            var varMask = Instantiate(_maskInstancePrefab, varTargetArea.MaskContainer);
+            _maskInstancePrefab.Setup(varSelectedEffect);
+            _activeMasks.Add(varMask.gameObject);
         }
 
         private List<AreaView> GetValidSpawnAreas()
