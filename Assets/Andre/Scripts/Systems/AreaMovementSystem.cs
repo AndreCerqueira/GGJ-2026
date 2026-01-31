@@ -58,10 +58,23 @@ namespace Andre.Scripts.Systems
             
             playerTransform.SetParent(area.CharacterContainer);
             playerTransform.DOLocalMove(Vector3.zero, _moveDuration)
-                           .SetEase(Ease.OutQuad);
+                           .SetEase(Ease.OutQuad)
+                           .OnComplete(() => TryPickMask(area));
 
             ClearHighlights();
             _selectedPlayer = null;
+        }
+
+        private void TryPickMask(AreaView area)
+        {
+            if (area.HasMask)
+            {
+                var mask = area.GetMask();
+                if (mask != null)
+                {
+                    MaskSpawnerSystem.Instance.OnMaskPicked(mask, area);
+                }
+            }
         }
 
         private void ClearHighlights()

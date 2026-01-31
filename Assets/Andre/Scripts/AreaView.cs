@@ -30,6 +30,15 @@ namespace Andre.Scripts
             _coordinate = coord;
         }
 
+        public GameObject GetMask()
+        {
+            if (HasMask)
+            {
+                return _maskContainer.GetChild(0).gameObject;
+            }
+            return null;
+        }
+
         public void SetHighlight(bool active)
         {
             _blinkTween?.Kill();

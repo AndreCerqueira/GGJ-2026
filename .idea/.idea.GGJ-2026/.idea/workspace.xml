@@ -5,23 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14477d0f-ba43-49a7-b3af-c22614c2b999" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/EnemyView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/EnemyView.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Systems/GridSystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Systems/GridSystem.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Systems/MarkSpawnerSystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Systems/MarkSpawnerSystem.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/AreaViewDefault.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Prefabs/AreaViewDefault.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Prefabs/Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/AreaMovementSystem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/AreaMovementSystem.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/AreaView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/AreaView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/AreaViewCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/AreaViewCreator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/PlayerView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/PlayerView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/TempMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/TempMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Systems/AreaMovementSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Systems/AreaMovementSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/SampleSceneProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/SampleSceneProfile.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +99,7 @@
       <option name="presentableId" value="Default" />
       <updated>1769808751583</updated>
       <workItem from="1769808751597" duration="52000" />
-      <workItem from="1769809018277" duration="8678000" />
+      <workItem from="1769809018277" duration="9704000" />
     </task>
     <servers />
   </component>
