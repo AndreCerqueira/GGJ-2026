@@ -9,6 +9,10 @@ public class HealthSystem : MonoBehaviour
 {
     [Header("Health")]
     [SerializeField] private int _lives = 1; // number of hits before death
+    [Header("Tombstone")]
+    [SerializeField] private GameObject _tombstonePrefab;
+    [Tooltip("Player prefab to use when respawning from this tombstone. Assign the player prefab here so tombstone can respawn it later.")]
+    [SerializeField] private GameObject _playerPrefabForRespawn;
 
     public bool IsDead { get; private set; }
 
@@ -53,19 +57,45 @@ public class HealthSystem : MonoBehaviour
         IsDead = true;
 
         Debug.Log($"[HealthSystem] {gameObject.name} died.");
+        // Spawn tombstone at this position (if assigned), otherwise create a temporary cube
+        SpawnTombstone();
 
-        // disable visuals / collisions (simple approach)
-        var renderers = GetComponentsInChildren<Renderer>();
-        foreach (var r in renderers) r.enabled = false;
-
-        var colliders = GetComponentsInChildren<Collider>();
-        foreach (var c in colliders) c.enabled = false;
-
-        // Optionally destroy the GameObject after a delay
-        // Destroy(gameObject);
+        // Destroy the player GameObject so it is removed from the scene and registries
+        Destroy(gameObject);
 
         // Check if all players are dead
         CheckAllPlayersDead();
+    }
+
+    private void SpawnTombstone()
+    {
+        var parent = transform.parent; // usually CharacterContainer (AreaView)
+        if (_tombstonePrefab == null)
+        {
+            Debug.LogWarning("[HealthSystem] No tombstone prefab assigned; skipping tombstone spawn.");
+            return;
+        }
+
+        var tomb = Instantiate(_tombstonePrefab, transform.position, Quaternion.identity, parent);
+
+        // Try to set Tombstone data (player prefab) so respawn is possible later
+        var tombComp = tomb.GetComponent<Tombstone>();
+        if (tombComp == null)
+        {
+            tombComp = tomb.AddComponent<Tombstone>();
+        }
+
+        tombComp.PlayerPrefab = _playerPrefabForRespawn;
+        tombComp.OriginalPlayerName = gameObject.name;
+    }
+
+    /// <summary>
+    /// Kill immediately (force die) — convenience API for enemies.
+    /// </summary>
+    public void Kill()
+    {
+        if (IsDead) return;
+        Die();
     }
 
     private void CheckAllPlayersDead()

@@ -56,6 +56,21 @@ namespace Andre.Scripts
                 }
             }
 
+            // If there are players in the target area, kill them first (handles cases where physics collisions don't fire)
+            if (targetArea.IsOccupied)
+            {
+                var playersInArea = targetArea.CharacterContainer.GetComponentsInChildren<Andre.Scripts.PlayerView>(true);
+                foreach (var p in playersInArea)
+                {
+                    var hs = p.GetComponent<HealthSystem>();
+                    if (hs != null)
+                    {
+                        Debug.Log($"[EnemyView] {gameObject.name} killing player {p.gameObject.name} in {targetArea.name}");
+                        hs.Kill();
+                    }
+                }
+            }
+
             // Reparent and animate to center
             transform.SetParent(targetArea.CharacterContainer);
 
