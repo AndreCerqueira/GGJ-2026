@@ -66,45 +66,37 @@ namespace Andre.Scripts.Systems
         {
             var moves = playerMoves;
             var gs = _gameSystem ?? GameSystem.GetOrFindInstance();
+    
+            var playerToMove = _selectedPlayer;
+            if (playerToMove == null) return;
+
+            // 2. Limpa os destaques e a seleção da classe IMEDIATAMENTE
+            ClearHighlights();
+            _selectedPlayer = null;
+            playerMoves = 3; // Reset do contador de movimentos
 
             for (var i = 0; i < moves; i++)
             {
-                var playerTransform = _selectedPlayer.transform;
-
+                var playerTransform = playerToMove.transform;
                 playerTransform.SetParent(area.CharacterContainer);
 
                 if (i == moves - 1)
                 {
-                    // final move - when this tween completes we trigger end of player turn -> enemy turn
                     playerTransform.DOLocalMove(Vector3.zero, _moveDuration)
-                                   .SetEase(Ease.OutQuad)
-                                   .OnComplete(() =>
-                                   {
-                                       TryPickMask(area);
-                                       if (gs == null) gs = GameSystem.GetOrFindInstance();
-                                       if (gs != null)
-                                       {
-                                           gs.EnemyTurn();
-                                       }
-                                       else
-                                       {
-                                           Debug.LogError("[AreaMovementSystem] No GameSystem found to start enemy turn.");
-                                       }
-                                   });
+                        .SetEase(Ease.OutQuad)
+                        .OnComplete(() =>
+                        {
+                            TryPickMask(area);
+                            if (gs != null) gs.EnemyTurn();
+                        });
                 }
                 else
                 {
                     playerTransform.DOLocalMove(Vector3.zero, _moveDuration)
-                                   .SetEase(Ease.OutQuad)
-                                   .OnComplete(() => TryPickMask(area));
+                        .SetEase(Ease.OutQuad)
+                        .OnComplete(() => TryPickMask(area));
                 }
-
-                ClearHighlights();
-                _selectedPlayer = null;
-                playerMoves -= 1;
             }
-
-            playerMoves = 3;
         }
 
         private void TryPickMask(AreaView area)
