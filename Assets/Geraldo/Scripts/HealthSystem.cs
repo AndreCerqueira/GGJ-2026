@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class HealthSystem : MonoBehaviour
 {
+    public static HealthSystem Instance { get; private set; }
+
     [Header("Health")]
     [SerializeField] private int _lives = 1; // number of hits before death
     [Header("Tombstone")]
@@ -98,14 +100,31 @@ public class HealthSystem : MonoBehaviour
         Die();
     }
 
-    private void CheckAllPlayersDead()
+    public bool CheckAllPlayersDead()
     {
         // Use the PlayerView registry (keeps track of players without Find* calls)
         var players = Andre.Scripts.PlayerView.AllPlayers;
-        if (players == null || players.Count == 0)
+        if (players == null)
         {
-            Debug.LogWarning("[HealthSystem] No players registered when checking for loss condition.");
-            return;
+            Debug.LogWarning("[HealthSystem] Player registry is null when checking for loss condition.");
+            return false;
+        }
+
+        // If the registry is empty it usually means all players were removed (dead),
+        // so treat that as the lose condition rather than silently returning.
+        if (players.Count == 0)
+        {
+            Debug.Log("[HealthSystem] Player registry empty -> assuming all players dead. Calling LoseGame().");
+            var gsEmpty = GameSystem.GetOrFindInstance();
+            if (gsEmpty != null)
+            {
+                gsEmpty.LoseGame();
+            }
+            else
+            {
+                Debug.LogError("[HealthSystem] Could not find GameSystem to report LoseGame() (empty registry path).");
+            }
+            return true;
         }
 
         var anyAlive = players.Any(p =>
@@ -126,6 +145,9 @@ public class HealthSystem : MonoBehaviour
             {
                 Debug.LogError("[HealthSystem] Could not find GameSystem to report LoseGame().");
             }
+            return true;
         }
+
+        return false;
     }
 }

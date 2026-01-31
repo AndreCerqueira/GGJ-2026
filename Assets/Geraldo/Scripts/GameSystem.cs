@@ -9,7 +9,8 @@ public enum GameState
     ENEMYTURN,
     EVENTS,
     WIN,
-    LOSE
+    LOSE,
+    DEADSCREEN
 }
 
 public class GameSystem : MonoBehaviour
@@ -150,7 +151,15 @@ public class GameSystem : MonoBehaviour
         if (_turnEndDelay > 0f) yield return new WaitForSeconds(_turnEndDelay);
 
         // proceed to events (and then player turn)
-        Events();
+        if (HealthSystem.Instance.CheckAllPlayersDead() == true)
+        {
+            LoseGame();
+        }
+        else
+        {
+            Events(); 
+        }
+            
     }
 
     /// <summary>
@@ -193,5 +202,12 @@ public class GameSystem : MonoBehaviour
         state = GameState.LOSE;
         //Debug.Log($"[GameSystem] state -> {state}");
         Debug.Log("You Lose!");
+        DeadScreen();
+    }
+
+    public void DeadScreen()
+    {
+        //Debug.Log($"[GameSystem] DeadScreen() called (current state: {state})");
+        state = GameState.DEADSCREEN;
     }
 }
