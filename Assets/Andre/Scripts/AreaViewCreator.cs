@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Andre.Scripts.Systems;
 using DG.Tweening;
 using UnityEngine;
@@ -6,17 +7,21 @@ namespace Andre.Scripts
 {
     public class AreaViewCreator : MonoBehaviour
     {
-        [Header("Prefabs")]
+        [Header("Prefabs - Environment")]
         [SerializeField] private AreaView _areaPrefab;
-        [SerializeField] private GameObject _player1Prefab;
-        [SerializeField] private GameObject _player2Prefab;
+        [SerializeField] private GameObject _obstaclePrefab;
+
+        [Header("Prefabs - Characters")]
+        [SerializeField] private GameObject _player1Prefab; // Prefab do Jogador 1
+        [SerializeField] private GameObject _player2Prefab; // Prefab do Jogador 2
         [SerializeField] private GameObject _enemyPrefab;
 
         [Header("Grid Settings")]
         [SerializeField] private int _gridSize = 7;
         [SerializeField] private float _spacing = 1.1f;
 
-        [Header("Spawn Positions (Coordinates)")]
+        [Header("Spawn Settings")]
+        [SerializeField] private int _obstacleCount = 5;
         [SerializeField] private Vector2Int _player1Coord = new Vector2Int(0, 0);
         [SerializeField] private Vector2Int _player2Coord = new Vector2Int(0, 1);
         [SerializeField] private Vector2Int _enemyCoord = new Vector2Int(6, 6);
@@ -26,12 +31,11 @@ namespace Andre.Scripts
 
         public void Initialize()
         {
-            CreateGrid(); 
+            CreateGrid();
             SpawnEntities();
+            SpawnObstacles();
             MaskSpawnerSystem.Instance.SpawnInitialMasks();
 
-            // Start the game after all areas, entities and masks have been spawned.
-            // If GameSystem isn't initialized yet, register to start once it is.
             var gs = GameSystem.GetOrFindInstance();
             if (gs == null)
             {
@@ -51,11 +55,11 @@ namespace Andre.Scripts
                 {
                     var coord = new Vector2Int(x, z);
                     var worldPos = new Vector3(x * _spacing, 0, z * _spacing);
-                    
+
                     var area = Instantiate(_areaPrefab, worldPos, Quaternion.identity, transform);
                     area.name = $"Area_{x}_{z}";
                     area.Setup(coord);
-                    
+
                     GridSystem.Instance.RegisterArea(coord, area);
                     AnimateSpawn(area.gameObject, x, z);
                 }
@@ -64,27 +68,56 @@ namespace Andre.Scripts
 
         private void SpawnEntities()
         {
+            // Agora usamos os prefabs específicos para cada jogador
             SpawnAt(_player1Prefab, _player1Coord);
             SpawnAt(_player2Prefab, _player2Coord);
+            
             SpawnAt(_enemyPrefab, _enemyCoord);
         }
 
-        public void SpawnAt(GameObject prefab, Vector2Int coord)
+        private void SpawnObstacles()
         {
+            var usedCoords = new HashSet<Vector2Int> { _player1Coord, _player2Coord, _enemyCoord };
+            var attempts = 0;
+            var spawned = 0;
+
+            while (spawned < _obstacleCount && attempts < 100)
+            {
+                var x = Random.Range(0, _gridSize);
+                var z = Random.Range(0, _gridSize);
+                var coord = new Vector2Int(x, z);
+
+                if (!usedCoords.Contains(coord))
+                {
+                    SpawnAt(_obstaclePrefab, coord);
+                    usedCoords.Add(coord);
+                    spawned++;
+                }
+
+                attempts++;
+            }
+        }
+
+        private void SpawnAt(GameObject prefab, Vector2Int coord)
+        {
+            if (prefab == null)
+            {
+                Debug.LogWarning($"[AreaViewCreator] Prefab is missing for coord {coord}");
+                return;
+            }
+
             if (!GridSystem.Instance.TryGetArea(coord, out var targetArea)) return;
 
-            Debug.Log($"Spawning prefab '{prefab.name}' at {coord} -> area '{targetArea.name}'");
             var entity = Instantiate(prefab, targetArea.CharacterContainer);
-
             AnimateSpawn(entity, coord.x, coord.y);
         }
 
         private void AnimateSpawn(GameObject go, int x, int z)
         {
-            var varDelay = (x + z) * _delayStep;
+            var delay = (x + z) * _delayStep;
             go.transform.localScale = Vector3.zero;
             go.transform.DOScale(Vector3.one, _animDuration)
-                .SetDelay(varDelay)
+                .SetDelay(delay)
                 .SetEase(Ease.OutBack);
         }
     }

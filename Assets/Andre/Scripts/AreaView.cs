@@ -17,7 +17,13 @@ namespace Andre.Scripts
         public Transform CharacterContainer => _characterContainer;
         public Transform MaskContainer => _maskContainer;
         public Vector2Int Coordinate => _coordinate;
+        
+        // Verifica se tem filhos (Jogadores, Inimigos ou Obstáculos)
         public bool IsOccupied => _characterContainer.childCount > 0;
+        
+        // Verifica especificamente se um desses filhos é um Obstáculo
+        public bool HasObstacle => _characterContainer.GetComponentInChildren<ObstacleView>() != null;
+        
         public bool HasMask => _maskContainer.childCount > 0;
 
         private void Awake()
