@@ -17,7 +17,7 @@ namespace Andre.Scripts
         [SerializeField] private GameObject _enemyPrefab;
 
         [Header("Grid Settings")]
-        [SerializeField] private int _gridSize = 7;
+        [SerializeField] public int _gridSize = 7;
         [SerializeField] private float _spacing = 1.1f;
 
         [Header("Spawn Settings")]
@@ -30,9 +30,13 @@ namespace Andre.Scripts
         private const float _animDuration = 0.5f;
         private const float _delayStep = 0.05f;
 
+        private HashSet<Vector2Int> usedCoords = new();
+
         public void Initialize()
         {
             CreateGrid();
+
+            usedCoords.Clear();
             SpawnEntities();
             SpawnObstacles();
             MaskSpawnerSystem.Instance.SpawnInitialMasks();
@@ -71,13 +75,23 @@ namespace Andre.Scripts
         {
             // Agora usamos os prefabs específicos para cada jogador
             SpawnAt(_player1Prefab, _player1Coord);
+            usedCoords.Add(_player1Coord);
             SpawnAt(_player2Prefab, _player2Coord);
+            usedCoords.Add(_player2Coord);
 
-            PickEnemyCoord();
-            SpawnAt(_enemyPrefab, _enemyCoord);
+            EnemySystem.Instance.SpawnEnemies();
         }
 
-        private void PickEnemyCoord()
+        public GameObject SpawnNewEnemy()
+        {
+            PickEnemyCoord(usedCoords);
+            GameObject newEnemy = SpawnAt(_enemyPrefab, _enemyCoord);
+            usedCoords.Add(new(_enemyCoord.x, _enemyCoord.y));
+
+            return newEnemy;
+        }
+
+        private void PickEnemyCoord(HashSet<Vector2Int> usedCoords)
         {
             const int maxAttempts = 100;
             var attempts = 0;
@@ -89,7 +103,7 @@ namespace Andre.Scripts
                     Random.Range(0, _gridSize)
                 );
 
-                if (coord == _player1Coord || coord == _player2Coord)
+                if (usedCoords.Contains(coord))
                 {
                     attempts++;
                     continue;
@@ -121,7 +135,6 @@ namespace Andre.Scripts
 
         private void SpawnObstacles()
         {
-            var usedCoords = new HashSet<Vector2Int> { _player1Coord, _player2Coord, _enemyCoord };
             var attempts = 0;
             var spawned = 0;
 
