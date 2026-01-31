@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 using Andre.Scripts.Systems;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.LightTransport;
 
 namespace Andre.Scripts
 {
@@ -11,9 +13,11 @@ namespace Andre.Scripts
         private AreaViewCreator areaViewCreator;
         private List<GameObject> lockedSpacesAI = new();
 
-        private const int MOVES_PER_TURN = 2;
+        public int MOVES_PER_TURN = 2;
         private const float MOVE_DURATION = 0.25f;
         private const float MOVE_DELAY = 0.1f;
+
+        private static bool _subscribed = false;
 
         private void Awake()
         {
@@ -22,16 +26,25 @@ namespace Andre.Scripts
 
         private void OnEnable()
         {
-            GameSystem.OnEnemyTurn += OnEnemyTurn;
+            if (!_subscribed)
+            {
+                _subscribed = true;
+                GameSystem.OnEnemyTurn += EnemySystem.Instance.ManageEnemiesTurn;
+            }
         }
 
         private void OnDisable()
         {
-            GameSystem.OnEnemyTurn -= OnEnemyTurn;
+            if (_subscribed)
+            {
+                _subscribed = false;
+                GameSystem.OnEnemyTurn -= EnemySystem.Instance.ManageEnemiesTurn;
+            }
         }
 
-        private void OnEnemyTurn()
+        public void OnEnemyTurn()
         {
+            Debug.Log("Enemy Moves");
             PerformTurnSequence();
         }
 
@@ -62,6 +75,12 @@ namespace Andre.Scripts
 
                 if (gs != null) gs.CompleteTurnAction();
             });
+        }
+
+        public IEnumerator WaitEnemyTurn()
+        {
+            float duration = (MOVE_DURATION + MOVE_DELAY) * MOVES_PER_TURN;
+            yield return new WaitForSeconds(duration);
         }
 
         private void MoveTowardsNearestPlayer()
@@ -126,6 +145,7 @@ namespace Andre.Scripts
 
         private Vector2Int GetBestDirection(Vector2Int current, Vector2Int target)
         {
+            Debug.Log("Current: " + current);
             var diff = target - current;
             var tryHorizontal = Mathf.Abs(diff.x) > Mathf.Abs(diff.y);
 
@@ -133,6 +153,12 @@ namespace Andre.Scripts
             {
                 var dirX = new Vector2Int(System.Math.Sign(diff.x), 0);
                 if (IsValidMove(current + dirX)) return dirX;
+
+                if (diff.y == 0)
+                {
+                    bool playerInBotHalfMap = target.y <= (areaViewCreator._gridSize+1) / 2;
+                    diff.y = playerInBotHalfMap ? 1 : -1;
+                }
 
                 var dirY = new Vector2Int(0, System.Math.Sign(diff.y));
                 if (IsValidMove(current + dirY)) return dirY;
@@ -154,6 +180,12 @@ namespace Andre.Scripts
             {
                 var dirY = new Vector2Int(0, System.Math.Sign(diff.y));
                 if (IsValidMove(current + dirY)) return dirY;
+
+                if (diff.x == 0)
+                {
+                    bool playerInLeftHalfMap = target.x <= (areaViewCreator._gridSize + 1) / 2;
+                    diff.x = playerInLeftHalfMap ? 1 : -1;
+                }
 
                 var dirX = new Vector2Int(System.Math.Sign(diff.x), 0);
                 if (IsValidMove(current + dirX)) return dirX;
@@ -188,7 +220,7 @@ namespace Andre.Scripts
             if (!GridSystem.Instance.TryGetArea(coord, out var area))
                 return false;
 
-            return !IsBlockedByObstacle(area);
+            return !IsBlockedByObstacle(area) && !IsBlockedByEnemy(area);
         }
 
         private bool IsBlockedByObstacle(AreaView area)
@@ -197,6 +229,14 @@ namespace Andre.Scripts
 
             var obstacle = area.CharacterContainer.GetComponentInChildren<ObstacleView>();
             return obstacle != null;
+        }
+
+        private bool IsBlockedByEnemy(AreaView area)
+        {
+            if (!area.IsOccupied) return false;
+
+            var enemy = area.CharacterContainer.GetComponentInChildren<EnemyView>();
+            return enemy != null;
         }
     }
 }
