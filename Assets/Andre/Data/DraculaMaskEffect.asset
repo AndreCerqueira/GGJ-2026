@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee4458a0b5445c0aaa61fbebfe76eb4, type: 3}
   m_Name: DraculaMaskEffect
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.Masks.DraculaMaskEffect
+  _maskSprite: {fileID: 21300000, guid: e148193a65705164185de9dbfa181da0, type: 3}
   _effectPreset: {fileID: 11400000, guid: 121bc723e02b8cb45af538d432de2223, type: 2}
   _message: Every character moved up to 3 areas!

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Andre.Scripts.Masks.Base;
 using Andre.Scripts.Systems;
+using Andre.Scripts.UI;
 using UnityEngine;
 
 namespace Andre.Scripts
@@ -45,12 +46,23 @@ namespace Andre.Scripts
         private void UpdatePlayerVisual(AreaView area, Sprite maskSprite)
         {
             var varPlayer = area.CharacterContainer.GetComponentInChildren<PlayerView>();
-            if (varPlayer != null)
+            if (varPlayer == null) return;
+
+            var varDisplay = varPlayer.GetComponentInChildren<PlayerMaskDisplay>();
+            if (varDisplay != null)
             {
-                var varDisplay = varPlayer.GetComponentInChildren<PlayerMaskDisplay>();
-                if (varDisplay != null)
+                varDisplay.SetMask(maskSprite);
+            }
+
+            var varTargetId = varPlayer.gameObject.name.Contains("1") ? 1 : 2;
+            
+            var varUiDisplays = FindObjectsByType<PlayerMaskDisplayUI>(FindObjectsSortMode.None);
+            foreach (var varUiItem in varUiDisplays)
+            {
+                if (varUiItem.PlayerId == varTargetId)
                 {
-                    varDisplay.SetMask(maskSprite);
+                    varUiItem.SetMask(maskSprite);
+                    break;
                 }
             }
         }
