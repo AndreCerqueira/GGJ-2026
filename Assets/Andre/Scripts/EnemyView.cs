@@ -9,7 +9,7 @@ namespace Andre.Scripts
         // Direction in grid coordinates (right/left)
         private Vector2Int _direction = Vector2Int.right;
         private int _consecutiveMoves = 0;
-        private const int MovesBeforeFlip = 2;
+        private const int MovesBeforeFlip = 4;
 
         private void OnEnable()
         {
@@ -29,7 +29,7 @@ namespace Andre.Scripts
             _consecutiveMoves++;
             if (_consecutiveMoves >= MovesBeforeFlip)
             {
-                _consecutiveMoves = 0;
+                _consecutiveMoves = 1;
                 _direction = new Vector2Int(-_direction.x, -_direction.y); // flip horizontal/vertical
             }
         }

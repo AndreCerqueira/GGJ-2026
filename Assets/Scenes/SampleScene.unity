@@ -2137,6 +2137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4642d3af6be32bd448118b33d04b2008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameSystem
+  _turnStartDelay: 0.15
+  _turnEndDelay: 0.15
   state: 0
 --- !u!4 &845604678
 Transform:
