@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Andre/External/Feel/MMTools/Core/MMSceneLoading/LoadingScreens/MMAdditiveLoadingScreenFastFade.unity
     guid: 8101c376367d6e44f84e602722e5ac10
+  - enabled: 1
+    path: Assets/Andre/AndreScene.unity
+    guid: 35083bad5464e83459cb9aa8365758f0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
