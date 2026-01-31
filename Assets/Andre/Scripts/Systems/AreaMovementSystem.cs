@@ -64,31 +64,47 @@ namespace Andre.Scripts.Systems
 
         public void MovePlayerToArea(AreaView area)
         {
-            for (var i = 0; i < playerMoves; i++)
+            var moves = playerMoves;
+            var gs = _gameSystem ?? GameSystem.GetOrFindInstance();
+
+            for (var i = 0; i < moves; i++)
             {
                 var playerTransform = _selectedPlayer.transform;
-            
-            playerTransform.SetParent(area.CharacterContainer);
-            playerTransform.DOLocalMove(Vector3.zero, _moveDuration)
-                           .SetEase(Ease.OutQuad)
-                           .OnComplete(() => TryPickMask(area));
 
-            ClearHighlights();
-            _selectedPlayer = null;
-            playerMoves -= 1;
+                playerTransform.SetParent(area.CharacterContainer);
+
+                if (i == moves - 1)
+                {
+                    // final move - when this tween completes we trigger end of player turn -> enemy turn
+                    playerTransform.DOLocalMove(Vector3.zero, _moveDuration)
+                                   .SetEase(Ease.OutQuad)
+                                   .OnComplete(() =>
+                                   {
+                                       TryPickMask(area);
+                                       if (gs == null) gs = GameSystem.GetOrFindInstance();
+                                       if (gs != null)
+                                       {
+                                           gs.EnemyTurn();
+                                       }
+                                       else
+                                       {
+                                           Debug.LogError("[AreaMovementSystem] No GameSystem found to start enemy turn.");
+                                       }
+                                   });
+                }
+                else
+                {
+                    playerTransform.DOLocalMove(Vector3.zero, _moveDuration)
+                                   .SetEase(Ease.OutQuad)
+                                   .OnComplete(() => TryPickMask(area));
+                }
+
+                ClearHighlights();
+                _selectedPlayer = null;
+                playerMoves -= 1;
             }
 
-           // Debug.Log("[AreaMovementSystem] MovePlayerToArea completed - attempting to call EnemyTurn()");
-            // Prefer cached reference
-            var gs = _gameSystem ?? GameSystem.GetOrFindInstance();
-            if (gs == null)
-            {
-               // Debug.LogError("[AreaMovementSystem] No GameSystem found in scene. EnemyTurn not called.");
-                return;
-            }
-
-            //Debug.Log("[AreaMovementSystem] Calling GameSystem.Instance.EnemyTurn()");
-            gs.EnemyTurn();
+            playerMoves = 3;
         }
 
         private void TryPickMask(AreaView area)

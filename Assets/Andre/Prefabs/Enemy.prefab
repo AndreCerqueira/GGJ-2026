@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7206125966345522466}
   - component: {fileID: 8281440153499104176}
   - component: {fileID: 3731876537283505428}
+  - component: {fileID: -6303592655762386717}
+  - component: {fileID: 7147931433750175369}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -104,3 +106,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f22bf8e0ff641d39c878c16f212add2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.EnemyView
+--- !u!65 &-6303592655762386717
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312771916335996498}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.35, y: 2.1874545, z: 0.2}
+  m_Center: {x: 0, y: 1.0937272, z: 0}
+--- !u!114 &7147931433750175369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312771916335996498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55cf12d264463364c9115a5ad2f95f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'

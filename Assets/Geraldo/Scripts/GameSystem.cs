@@ -7,6 +7,7 @@ public enum GameState
     START,
     PLAYERTURN,
     ENEMYTURN,
+    EVENTS,
     WIN,
     LOSE
 }
@@ -14,6 +15,12 @@ public enum GameState
 public class GameSystem : MonoBehaviour
 {
     public static GameSystem Instance { get; private set; }
+
+    // Event raised when the GameSystem enters the enemy turn; subscribers (enemies) can react.
+    public static event System.Action OnEnemyTurn;
+    private int _pendingTurnActions = 0;
+    [SerializeField] private float _turnStartDelay = 0.15f;
+    [SerializeField] private float _turnEndDelay = 0.15f;
 
     /// <summary>
     /// Returns the current Instance or tries to find one in the scene and assign it.
@@ -23,7 +30,8 @@ public class GameSystem : MonoBehaviour
     {
         if (Instance != null) return Instance;
 
-        var found = FindObjectOfType<GameSystem>();
+        var found = UnityEngine.Object.FindAnyObjectByType<GameSystem>();
+        
         if (found != null)
         {
             Instance = found;
@@ -104,10 +112,71 @@ public class GameSystem : MonoBehaviour
 
     public void EnemyTurn()
     {
-        //Debug.Log($"[GameSystem] EnemyTurn() called (current state: {state})");
+        // start coroutine to allow listeners to perform async work (animations/movement)
+        StartCoroutine(EnemyTurnRoutine());
+    }
+    
+    private System.Collections.IEnumerator EnemyTurnRoutine()
+    {
+        Debug.Log($"[GameSystem] EnemyTurnRoutine() starting (current state: {state})");
         state = GameState.ENEMYTURN;
-        //Debug.Log($"[GameSystem] state -> {state}");
+        Debug.Log($"[GameSystem] state -> {state}");
         Debug.Log("Enemy's Turn!");
+
+        if (_turnStartDelay > 0f) yield return new WaitForSeconds(_turnStartDelay);
+
+        try
+        {
+            OnEnemyTurn?.Invoke();
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError($"[GameSystem] Exception while invoking OnEnemyTurn: {ex}");
+        }
+
+        // wait until all registered turn actions complete
+        var safety = 0;
+        while (_pendingTurnActions > 0)
+        {
+            yield return null;
+            safety++;
+            if (safety > 600) // ~10s at 60fps
+            {
+                Debug.LogWarning("[GameSystem] EnemyTurnRoutine waiting timed out waiting for pending actions.");
+                break;
+            }
+        }
+
+        if (_turnEndDelay > 0f) yield return new WaitForSeconds(_turnEndDelay);
+
+        // proceed to events (and then player turn)
+        Events();
+    }
+
+    /// <summary>
+    /// Register a pending action that GameSystem will wait for before finishing the current enemy turn.
+    /// </summary>
+    public void RegisterTurnAction()
+    {
+        _pendingTurnActions++;
+        //Debug.Log($"[GameSystem] RegisterTurnAction -> pending={_pendingTurnActions}");
+    }
+
+    /// <summary>
+    /// Mark previously registered turn action as completed.
+    /// </summary>
+    public void CompleteTurnAction()
+    {
+        _pendingTurnActions = Mathf.Max(0, _pendingTurnActions - 1);
+        //Debug.Log($"[GameSystem] CompleteTurnAction -> pending={_pendingTurnActions}");
+    }
+  public void Events()
+    {
+        //Debug.Log($"[GameSystem] Events() called (current state: {state})");
+        state = GameState.EVENTS;
+        //Debug.Log($"[GameSystem] state -> {state}");
+        Debug.Log("Events!");
+        PlayerTurn();
     }
 
     public void WinGame()
@@ -118,7 +187,7 @@ public class GameSystem : MonoBehaviour
         Debug.Log("You Win!");
     }
 
-    void LoseGame()
+    public void LoseGame()
     {
         //Debug.Log($"[GameSystem] LoseGame() called (current state: {state})");
         state = GameState.LOSE;
