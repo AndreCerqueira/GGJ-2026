@@ -207,6 +207,8 @@ MonoBehaviour:
   _characterContainer: {fileID: 2022212987431244044}
   _maskContainer: {fileID: 523971749261253663}
   _renderer: {fileID: 3124829856674778196}
+  _defaultTexture: {fileID: 2800000, guid: 519af5aeb40db014ea3a09dd91cd55b0, type: 3}
+  _highlightTexture: {fileID: 2800000, guid: a116b1b99ab48324287e515ae557cd96, type: 3}
 --- !u!65 &877866262849467032
 BoxCollider:
   m_ObjectHideFlags: 0
