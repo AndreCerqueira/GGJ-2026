@@ -1298,11 +1298,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.World.AreaViewCreator
   _areaPrefab: {fileID: -2792115933525323744, guid: 625d74981bf5d63469c0932cefd8ce6a, type: 3}
+  _obstaclePrefab: {fileID: 4728583557658436105, guid: fe64c52e65828a7498a2f2b850653b79, type: 3}
   _player1Prefab: {fileID: 6312771916335996498, guid: c754d745f678ff14783554529f0ea06e, type: 3}
   _player2Prefab: {fileID: 6312771916335996498, guid: e5ede71f4335d9048a0675c5c1f422c5, type: 3}
   _enemyPrefab: {fileID: 6312771916335996498, guid: 37481bea4f7e39e4a90a38831a4b1336, type: 3}
   _gridSize: 9
   _spacing: 1
+  _obstacleCount: 5
   _player1Coord: {x: 1, y: 0}
   _player2Coord: {x: 0, y: 1}
   _enemyCoord: {x: 6, y: 6}
@@ -6613,6 +6615,53 @@ PrefabInstance:
       addedObject: {fileID: 287157618}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9311617b76dd8d049b198314d66ddeb5, type: 3}
+--- !u!1 &2013689732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2013689734}
+  - component: {fileID: 2013689733}
+  m_Layer: 0
+  m_Name: HealthSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2013689733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013689732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0c9f55180b6f6540a00082e174c8669, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
+  _lives: 1
+  _tombstonePrefab: {fileID: 7277841207646078753, guid: 9d970bf049d920b4bb846a5944c22057, type: 3}
+  _playerPrefabForRespawn: {fileID: 6312771916335996498, guid: c754d745f678ff14783554529f0ea06e, type: 3}
+--- !u!4 &2013689734
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013689732}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.73703, y: -0, z: 4.09166}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2020562040
 GameObject:
   m_ObjectHideFlags: 0
@@ -7347,3 +7396,4 @@ SceneRoots:
   - {fileID: 1995901900}
   - {fileID: 2088715031}
   - {fileID: 845604678}
+  - {fileID: 2013689734}

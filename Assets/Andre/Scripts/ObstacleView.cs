@@ -1,6 +1,8 @@
-﻿namespace Andre.Scripts
+﻿using UnityEngine;
+
+namespace Andre.Scripts
 {
-    public class ObstacleView
+    public class ObstacleView : MonoBehaviour
     {
         
     }
