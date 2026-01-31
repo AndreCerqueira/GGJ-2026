@@ -15199,7 +15199,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -84.49994, y: -57.723267}
+  m_AnchoredPosition: {x: -84.5, y: -57.723206}
   m_SizeDelta: {x: 183.3336, y: 283.4464}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &238476972
@@ -15375,8 +15375,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b2299e31f94607aabb3d6a5f767207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.Systems.MaskSpawnerSystem
-  _maskPrefab: {fileID: 6742192194321614249, guid: 12098098d5ede9d4ea9f552daaef7db6, type: 3}
-  _maxMasks: 3
+  _maskPrefabs:
+  - {fileID: 6742192194321614249, guid: f8e9380880259a24aa9890fb25a25993, type: 3}
+  _maxMasks: 5
 --- !u!1 &278255091
 GameObject:
   m_ObjectHideFlags: 0
@@ -21151,7 +21152,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 91.66992, y: -57.723267}
+  m_AnchoredPosition: {x: 91.66992, y: -57.723206}
   m_SizeDelta: {x: 183.3336, y: 283.4464}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &386180534
@@ -21192,7 +21193,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 344}
-  m_SizeDelta: {x: 410.766, y: 100}
+  m_SizeDelta: {x: 964.254, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &386180536
 MonoBehaviour:
@@ -65028,6 +65029,7 @@ RectTransform:
   - {fileID: 310058714}
   - {fileID: 2094069153}
   - {fileID: 1064447643}
+  - {fileID: 1977094779}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -81944,6 +81946,41 @@ MonoBehaviour:
           ConditionPropertyName: 
           EnumConditionPropertyName: 
           EnumConditions: 0000000000000000000000000000000000000000000000000000000000000000
+--- !u!1 &1977094778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1977094779}
+  m_Layer: 5
+  m_Name: GameOver PopUp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1977094779
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977094778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1543904648}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1987546537
 GameObject:
   m_ObjectHideFlags: 0
@@ -87982,10 +88019,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 386180535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000047071393, y: 0}
-  m_SizeDelta: {x: 268.96216, y: 79.690735}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2110182044
 MonoBehaviour:

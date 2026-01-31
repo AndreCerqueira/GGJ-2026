@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Andre.Scripts.Masks;
 using Andre.Scripts.Masks.Base;
 using Andre.Scripts.Systems;
 using UnityEngine;
@@ -10,7 +9,7 @@ namespace Andre.Scripts
     {
         public static MaskSpawnerSystem Instance { get; private set; }
 
-        [SerializeField] private GameObject _maskPrefab;
+        [SerializeField] private List<GameObject> _maskPrefabs;
         [SerializeField] private int _maxMasks = 3;
 
         private List<GameObject> _activeMasks = new List<GameObject>();
@@ -44,13 +43,18 @@ namespace Andre.Scripts
 
         private void SpawnNewMask()
         {
+            if (_maskPrefabs == null || _maskPrefabs.Count == 0) return;
+
             var varAvailableAreas = GetValidSpawnAreas();
             if (varAvailableAreas.Count == 0) return;
 
-            var varRandomIndex = Random.Range(0, varAvailableAreas.Count);
-            var varTargetArea = varAvailableAreas[varRandomIndex];
+            var varRandomAreaIndex = Random.Range(0, varAvailableAreas.Count);
+            var varTargetArea = varAvailableAreas[varRandomAreaIndex];
 
-            var varMask = Instantiate(_maskPrefab, varTargetArea.MaskContainer);
+            var varRandomPrefabIndex = Random.Range(0, _maskPrefabs.Count);
+            var varSelectedPrefab = _maskPrefabs[varRandomPrefabIndex];
+
+            var varMask = Instantiate(varSelectedPrefab, varTargetArea.MaskContainer);
             _activeMasks.Add(varMask);
         }
 
