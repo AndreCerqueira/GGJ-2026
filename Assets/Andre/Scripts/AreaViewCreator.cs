@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Andre.Scripts.Systems;
 using DG.Tweening;
 using UnityEngine;
 
@@ -20,16 +20,14 @@ namespace Andre.Scripts
         [SerializeField] private Vector2Int _player2Coord = new Vector2Int(0, 1);
         [SerializeField] private Vector2Int _enemyCoord = new Vector2Int(6, 6);
 
-        private Dictionary<Vector2Int, AreaView> _grid = new Dictionary<Vector2Int, AreaView>();
-
         private const float _animDuration = 0.5f;
         private const float _delayStep = 0.05f;
 
         private void Start()
         {
             CreateGrid(); 
-            AreaMovementSystem.Instance.Initialize(_grid); 
             SpawnEntities();
+            MaskSpawnerSystem.Instance.SpawnInitialMasks();
         }
 
         private void CreateGrid()
@@ -45,7 +43,7 @@ namespace Andre.Scripts
                     area.name = $"Area_{x}_{z}";
                     area.Setup(coord);
                     
-                    _grid.Add(coord, area);
+                    GridSystem.Instance.RegisterArea(coord, area);
                     AnimateSpawn(area.gameObject, x, z);
                 }
             }
@@ -60,9 +58,8 @@ namespace Andre.Scripts
 
         private void SpawnAt(GameObject prefab, Vector2Int coord)
         {
-            if (!_grid.ContainsKey(coord)) return;
+            if (!GridSystem.Instance.TryGetArea(coord, out var targetArea)) return;
 
-            var targetArea = _grid[coord];
             var entity = Instantiate(prefab, targetArea.CharacterContainer);
             
             AnimateSpawn(entity, coord.x, coord.y);

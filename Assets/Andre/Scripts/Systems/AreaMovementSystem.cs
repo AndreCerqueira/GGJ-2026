@@ -2,7 +2,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace Andre.Scripts
+namespace Andre.Scripts.Systems
 {
     public class AreaMovementSystem : MonoBehaviour
     {
@@ -10,18 +10,12 @@ namespace Andre.Scripts
 
         private PlayerView _selectedPlayer;
         private List<AreaView> _highlightedAreas = new List<AreaView>();
-        private Dictionary<Vector2Int, AreaView> _gridRef;
 
         private const float _moveDuration = 0.3f;
 
         private void Awake()
         {
             Instance = this;
-        }
-
-        public void Initialize(Dictionary<Vector2Int, AreaView> grid)
-        {
-            _gridRef = grid;
         }
 
         public void SelectPlayer(PlayerView player)
@@ -43,7 +37,7 @@ namespace Andre.Scripts
             foreach (var dir in directions)
             {
                 var targetCoord = center + dir;
-                if (_gridRef.TryGetValue(targetCoord, out var area) && !area.IsOccupied)
+                if (GridSystem.Instance.TryGetArea(targetCoord, out var area) && !area.IsOccupied)
                 {
                     area.SetHighlight(true);
                     _highlightedAreas.Add(area);

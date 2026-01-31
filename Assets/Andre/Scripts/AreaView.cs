@@ -1,3 +1,4 @@
+using Andre.Scripts.Systems;
 using UnityEngine;
 using DG.Tweening;
 
@@ -6,6 +7,7 @@ namespace Andre.Scripts
     public class AreaView : MonoBehaviour
     {
         [SerializeField] private Transform _characterContainer;
+        [SerializeField] private Transform _maskContainer;
         [SerializeField] private MeshRenderer _renderer;
         
         private Color _originalColor;
@@ -13,8 +15,10 @@ namespace Andre.Scripts
         private Tween _blinkTween;
 
         public Transform CharacterContainer => _characterContainer;
+        public Transform MaskContainer => _maskContainer;
         public Vector2Int Coordinate => _coordinate;
         public bool IsOccupied => _characterContainer.childCount > 0;
+        public bool HasMask => _maskContainer.childCount > 0;
 
         private void Awake()
         {
