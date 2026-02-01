@@ -12,7 +12,7 @@ namespace Andre.Scripts.Masks
 
         public override void Execute(GameObject target)
         {
-            // O 'target' aqui é o GameObject da AreaView onde a máscara foi apanhada
+            // O 'target' no Execute vem do Spawner (é a AreaView)
             var varArea = target.GetComponent<AreaView>();
             if (varArea == null) return;
 
@@ -21,6 +21,17 @@ namespace Andre.Scripts.Masks
             if (varPlayer != null && varPlayer.PlayerLight != null)
             {
                 varPlayer.PlayerLight.intensity += _intensityBoost;
+            }
+        }
+
+        public override void OnRemove(GameObject target)
+        {
+            // O 'target' no OnRemove vem do PlayerMaskController (é o Player)
+            var varPlayer = target.GetComponent<PlayerView>();
+
+            if (varPlayer != null && varPlayer.PlayerLight != null)
+            {
+                varPlayer.PlayerLight.intensity -= _intensityBoost;
             }
         }
     }

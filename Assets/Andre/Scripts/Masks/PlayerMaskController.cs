@@ -23,7 +23,6 @@ namespace Andre.Scripts
             FindMyUiDisplay();
             GameSystem.Instance.OnPlayerTurn += OnPlayerTurn;
 
-            // Subscreve ao evento de morte do HealthSystem deste player específico
             var varHealth = GetComponent<HealthSystem>();
             if (varHealth != null)
             {
@@ -35,7 +34,6 @@ namespace Andre.Scripts
         {
             GameSystem.Instance.OnPlayerTurn -= OnPlayerTurn;
 
-            // Limpa a subscrição para evitar erros de memória
             var varHealth = GetComponent<HealthSystem>();
             if (varHealth != null)
             {
@@ -45,7 +43,6 @@ namespace Andre.Scripts
 
         private void OnPlayerDeath()
         {
-            // Quando este player morre, dá hide apenas na sua UI correspondente
             if (_uiDisplay != null)
             {
                 _uiDisplay.Hide();
@@ -70,6 +67,12 @@ namespace Andre.Scripts
         public void EquipMask(MaskEffect mask)
         {
             if (mask == null) return;
+
+            // Se já tiver uma máscara, remove o efeito dela antes de pôr a nova
+            if (_currentMask != null)
+            {
+                _currentMask.OnRemove(gameObject);
+            }
 
             _currentMask = mask;
             _currentDuration = mask.Duration;
@@ -96,6 +99,12 @@ namespace Andre.Scripts
 
         private void RemoveMask()
         {
+            // Chama a limpeza do efeito antes de anular a variável
+            if (_currentMask != null)
+            {
+                _currentMask.OnRemove(gameObject);
+            }
+
             _currentMask = null;
             _currentDuration = 0;
             UpdateVisuals();

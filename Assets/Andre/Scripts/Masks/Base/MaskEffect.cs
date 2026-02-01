@@ -26,5 +26,7 @@ namespace Andre.Scripts.Masks.Base
         /// Called at the start of the player's turn if the mask is equipped.
         /// </summary>
         public virtual void OnTurnStart(GameObject target) { }
+        public virtual void OnRemove(GameObject target) { }
+
     }
 }
