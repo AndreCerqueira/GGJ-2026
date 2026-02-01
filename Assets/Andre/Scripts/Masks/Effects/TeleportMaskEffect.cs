@@ -39,6 +39,21 @@ namespace Andre.Scripts.Masks
         {
             if (GridSystem.Instance == null) return;
 
+            // If an AreaMovementSystem exists, clear previous highlights immediately before teleporting.
+            try
+            {
+                var ams = AreaMovementSystem.Instance;
+                if (ams != null)
+                {
+                    var clearMethod = ams.GetType().GetMethod("ClearHighlights", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);
+                    clearMethod?.Invoke(ams, null);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogWarning($"[TeleportEffect] Could not clear highlights before teleport: {ex}");
+            }
+
             var varValidSpots = new List<AreaView>();
 
             // 1. Procurar todas as áreas válidas no Grid
@@ -60,11 +75,31 @@ namespace Andre.Scripts.Masks
                 // 3. Teleportar
                 // Ao mudar o parent, o sistema de jogo saberá que o jogador está na nova área
                 playerTransform.SetParent(varTargetArea.CharacterContainer);
-                
+
                 // Resetar a posição local para (0,0,0) para ficar centralizado no novo tile
                 playerTransform.localPosition = Vector3.zero;
 
                 Debug.Log($"[TeleportEffect] Teleportado de {currentArea.name} para {varTargetArea.name}");
+
+                // After teleporting, request AreaMovementSystem to show adjacent areas from the new coordinate
+                try
+                {
+                    var ams = AreaMovementSystem.Instance;
+                    if (ams != null)
+                    {
+                        // Find the player's current area coordinate
+                        var landedArea = playerTransform.GetComponentInParent<AreaView>();
+                        if (landedArea != null)
+                        {
+                            var showMethod = ams.GetType().GetMethod("ShowAdjacentAreas", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);
+                            showMethod?.Invoke(ams, new object[] { landedArea.Coordinate });
+                        }
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.LogWarning($"[TeleportEffect] Could not request ShowAdjacentAreas after teleport: {ex}");
+                }
             }
             else
             {
