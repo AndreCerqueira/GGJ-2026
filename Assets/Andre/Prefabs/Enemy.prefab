@@ -238,7 +238,7 @@ MonoBehaviour:
         Loop: 0
         Persistent: 0
         DoNotPlayIfClipAlreadyPlaying: 0
-        StopSoundOnFeedbackStop: 1
+        StopSoundOnFeedbackStop: 0
         Fade: 1
         FadeInitialVolume: 0
         FadeDuration: 1
