@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14477d0f-ba43-49a7-b3af-c22614c2b999" name="Changes" comment="" />
+    <list default="true" id="14477d0f-ba43-49a7-b3af-c22614c2b999" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/Tombstone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/Tombstone.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Geraldo/Prefabs/Tombstone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Geraldo/Prefabs/Tombstone.prefab" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
