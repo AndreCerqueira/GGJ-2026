@@ -13490,7 +13490,7 @@ MonoBehaviour:
     - rid: 9063713076170981544
       type: {class: MMF_MMSoundManagerSound, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:
-        Active: 0
+        Active: 1
         UniqueID: -267317835
         Label: MMSoundManager Sound
         OriginalLabel: MMSoundManager Sound
@@ -13562,7 +13562,7 @@ MonoBehaviour:
         Owner: {fileID: 1521745128}
         DebugActive: 0
         Source: 0
-        Sfx: {fileID: 8300000, guid: eeafb521bdfe6654db92e68663a9c775, type: 3}
+        Sfx: {fileID: 8300000, guid: e3825080933eb484d876f5ba7abc74ef, type: 3}
         AudioResourceToPlay: {fileID: 0}
         RandomSfx: []
         SequentialOrder: 0
@@ -13570,8 +13570,8 @@ MonoBehaviour:
         SequentialOrderHoldCooldownDuration: 2
         RandomUnique: 0
         SoundDataSO: {fileID: 0}
-        MinVolume: 0.2
-        MaxVolume: 0.2
+        MinVolume: 1
+        MaxVolume: 1
         MinPitch: 1
         MaxPitch: 1
         MmSoundManagerTrack: 0

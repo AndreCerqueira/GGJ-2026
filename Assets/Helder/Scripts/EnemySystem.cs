@@ -51,6 +51,13 @@ public class EnemySystem : MonoBehaviour
 
                     case TypeOfEnemy.Moves1:
                         newEnemyView.MOVES_PER_TURN = 1;
+                        
+                        var anim = newEnemyView.GetComponentInChildren<Animator>();
+                        if (anim != null)
+                        {
+                            anim.SetBool("IsPequeno", true);
+                        }
+                        
                         break;
                 }
             }
