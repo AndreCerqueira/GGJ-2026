@@ -1,31 +1,54 @@
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))] // Garante que tem um SpriteRenderer
 public class Tombstone : MonoBehaviour
 {
-    // Removi o [HideInInspector] para conseguires ver na cena se necessário
-    public int id = -1;
+    [Header("Visuals")]
+    [SerializeField] private SpriteRenderer _renderer;
+
+    // Campos originais necessários para o Respawn
     public GameObject PlayerPrefab; 
     public string OriginalPlayerName;
-    
-    public GameObject Player1Prefab;
-    public GameObject Player2Prefab;
 
-    // Debug: Adiciona logs para entender porque é false
+    private void Awake()
+    {
+        // Tenta encontrar o renderer automaticamente se não estiver atribuído
+        if (_renderer == null) _renderer = GetComponent<SpriteRenderer>();
+    }
+
+    // Novo método para definir o visual
+    public void SetDeadSprite(Sprite sprite)
+    {
+        if (_renderer != null && sprite != null)
+        {
+            _renderer.sprite = sprite;
+        }
+        else if (_renderer == null)
+        {
+            Debug.LogWarning($"[Tombstone] Falta o SpriteRenderer na Lápide {gameObject.name}!");
+        }
+    }
+
     public bool CanRespawn 
     {
-        get
+        get 
         {
-            bool isValid = id == 0 || id == 1;
+            bool isValid = PlayerPrefab != null;
+            if (!isValid) Debug.LogWarning($"[Tombstone] CanRespawn é FALSE nesta lápide ({gameObject.name}) porque o PlayerPrefab está vazio!");
             return isValid;
         }
     }
 
     public GameObject Respawn()
     {
-        var prefab = id == 1 ? Player1Prefab : Player2Prefab;
-        var go = Instantiate(prefab, transform.position, Quaternion.identity, transform.parent);
+        if (PlayerPrefab == null)
+        {
+            Debug.LogError("[Tombstone] Erro Crítico: Tentei reviver mas o PlayerPrefab desapareceu.");
+            return null;
+        }
+
+        var go = Instantiate(PlayerPrefab, transform.position, Quaternion.identity, transform.parent);
         
-        // Restaura o nome original ou usa o do prefab limpo
         if (!string.IsNullOrEmpty(OriginalPlayerName))
             go.name = OriginalPlayerName;
         else
