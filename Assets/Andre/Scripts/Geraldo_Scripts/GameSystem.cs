@@ -4,6 +4,9 @@ using UnityEngine;
 using Andre.Scripts;
 using Andre.Scripts.Toasts;
 using Andre.Scripts.UI;
+using MoreMountains.Feedbacks;
+using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public enum GameState
 {
@@ -26,7 +29,7 @@ public class GameSystem : MonoBehaviour
     private int _pendingTurnActions = 0;
     [SerializeField] private float _turnStartDelay = 0.15f;
     [SerializeField] private float _turnEndDelay = 0.15f;
-    
+
     [Header("Toast Presets")]
     [SerializeField] private ToastPresetSO _playerTurnPreset;
     [SerializeField] private ToastPresetSO _enemyTurnPreset;
@@ -36,7 +39,7 @@ public class GameSystem : MonoBehaviour
         if (Instance != null) return Instance;
 
         var found = UnityEngine.Object.FindAnyObjectByType<GameSystem>();
-        
+
         if (found != null)
         {
             Instance = found;
@@ -61,9 +64,26 @@ public class GameSystem : MonoBehaviour
     }
 
     public GameState state;
-    
+
+    public static bool gameEnd = false;
+
     public void Awake()
     {
+        if (gameEnd)
+        {
+            gameEnd = false;
+            
+            GameObject startGameFeedbackGO = GameObject.Find("START_GAME_FEEDBACK");
+            MMF_Player mmfPlayer = startGameFeedbackGO.GetComponent<MMF_Player>();
+            mmfPlayer.PlayFeedbacks();
+
+            DOVirtual.DelayedCall(1f, () =>
+            {
+                AreaViewCreator areaViewCreator = GameObject.FindFirstObjectByType<AreaViewCreator>();
+                areaViewCreator.Initialize();
+            });
+        }
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -82,7 +102,7 @@ public class GameSystem : MonoBehaviour
         _initialized = true;
         OnInitializedInternal?.Invoke();
     }
-    
+
     public void StartGame()
     {
         state = GameState.START;
@@ -103,7 +123,7 @@ public class GameSystem : MonoBehaviour
 
         state = GameState.PLAYERTURN;
         Debug.Log("Player's Turn!");
-        
+
         // Dispara o evento para desbloquear os botões
         OnPlayerTurn?.Invoke();
     }
@@ -112,7 +132,7 @@ public class GameSystem : MonoBehaviour
     {
         StartCoroutine(EnemyTurnRoutine());
     }
-    
+
     private System.Collections.IEnumerator EnemyTurnRoutine()
     {
         Debug.Log($"[GameSystem] EnemyTurnRoutine() starting (current state: {state})");
@@ -151,7 +171,7 @@ public class GameSystem : MonoBehaviour
         }
         else
         {
-            Events(); 
+            Events();
         }
     }
 
@@ -183,6 +203,19 @@ public class GameSystem : MonoBehaviour
         state = GameState.LOSE;
         Debug.Log("You Lose!");
         DeadScreen();
+
+        Instance.EndGame();
+    }
+
+    public void EndGame()
+    {
+        gameEnd = true;
+
+        StopAllCoroutines();
+        
+        GameObject startGameFeedbackGO = GameObject.Find("RELOAD_SCENE_FEEDBACK");
+        MMF_Player mmfPlayer = startGameFeedbackGO.GetComponent<MMF_Player>();
+        mmfPlayer.PlayFeedbacks();
     }
 
     public void DeadScreen()

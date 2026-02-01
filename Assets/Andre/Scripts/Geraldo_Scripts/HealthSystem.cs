@@ -61,6 +61,12 @@ namespace Andre.Scripts
             SpawnTombstone(); // Chama a função atualizada
 
             Destroy(gameObject);
+
+            ExitManager exitManager = FindFirstObjectByType<ExitManager>();
+            if (exitManager.VerifyEndGameEscaping())
+                return;
+
+            // Verifica se todos morreram
             CheckAllPlayersDead();
         }
 
