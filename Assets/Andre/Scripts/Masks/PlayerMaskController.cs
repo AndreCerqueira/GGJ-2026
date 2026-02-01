@@ -59,6 +59,8 @@ namespace Andre.Scripts
         private void OnPlayerTurn()
         {
             if (_currentMask == null) return;
+            
+            _currentMask.OnTurnStart(gameObject);
 
             _currentDuration--;
 

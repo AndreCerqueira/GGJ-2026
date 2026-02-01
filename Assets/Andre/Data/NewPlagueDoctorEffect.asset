@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: NewPlagueDoctorEffect
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.Masks.PlagueDoctorMaskEffect
   _maskSprite: {fileID: 21300000, guid: 33de83a5010797b438201a7765de9264, type: 3}
-  _duration: 3
+  _duration: 1
   _effectPreset: {fileID: 11400000, guid: 121bc723e02b8cb45af538d432de2223, type: 2}
   _message: A new light has been lit!
