@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14477d0f-ba43-49a7-b3af-c22614c2b999" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/Tombstone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/Tombstone.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Geraldo/Prefabs/Tombstone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Geraldo/Prefabs/Tombstone.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/AndreScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/AndreScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/GameSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/GameSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/InitialScreenViewUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/InitialScreenViewUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Couto/Fonts/MidnightMinutes_DEMO SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Couto/Fonts/MidnightMinutes_DEMO SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -107,6 +107,7 @@ public class GameSystem : MonoBehaviour
     {
         state = GameState.START;
         Debug.Log("Game Started!");
+        
         PlayerTurn();
     }
 

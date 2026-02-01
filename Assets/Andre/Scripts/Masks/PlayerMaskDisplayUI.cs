@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MoreMountains.Feedbacks;
+using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
@@ -10,6 +11,8 @@ namespace Andre.Scripts.UI
         [SerializeField] private GameObject _counterContainer;
         [SerializeField] private TextMeshProUGUI _counterText;
         [SerializeField] private int _playerId;
+        
+        [SerializeField] private MMF_Player _hideFeedback;
 
         public int PlayerId => _playerId;
 
@@ -32,6 +35,11 @@ namespace Andre.Scripts.UI
                 _counterText.text = duration.ToString();
                 _counterContainer.SetActive(true);
             }
+        }
+        
+        public void Hide()
+        {
+            _hideFeedback?.PlayFeedbacks();
         }
     }
 }
