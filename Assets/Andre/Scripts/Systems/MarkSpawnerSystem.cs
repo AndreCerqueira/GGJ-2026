@@ -41,6 +41,21 @@ namespace Andre.Scripts
                 // Aplica o efeito imediato
                 MaskEffectSystem.Instance.TriggerEffect(varMaskInstance.Effect, area.gameObject);
 
+                // If the mask grants immediate extra moves on pickup, apply them now so the player can use them.
+                try
+                {
+                    var extra = varMaskInstance.Effect.OnPickup(area.gameObject);
+                    if (extra != 0 && AreaMovementSystem.Instance != null)
+                    {
+                        AreaMovementSystem.Instance.playerMoves += extra;
+                        Debug.Log($"[MaskSpawnerSystem] Applied {extra} immediate extra moves to player.");
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.LogError($"[MaskSpawnerSystem] Exception when checking OnPickup: {ex}");
+                }
+
                 // Equipa a máscara no jogador (lógica de duração)
                 if (varPlayer != null)
                 {
@@ -53,7 +68,7 @@ namespace Andre.Scripts
             SpawnNewMask();
         }
 
-        public void SpawnNewMask()
+    public void SpawnNewMask()
         {
             if (_maskEffects == null || _maskEffects.Count == 0) return;
 
