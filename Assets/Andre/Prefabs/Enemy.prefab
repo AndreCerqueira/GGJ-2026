@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8281440153499104176}
   - component: {fileID: 3731876537283505428}
   - component: {fileID: -6303592655762386717}
+  - component: {fileID: 1450703086346945512}
+  - component: {fileID: 7067500396085781381}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -29,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,7 +85,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1501445971, guid: 54045090306a3c246a841dc67caa7477, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d268530101045824cb4b3129be0647ac, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f22bf8e0ff641d39c878c16f212add2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.EnemyView
+  MOVES_PER_TURN: 2
 --- !u!65 &-6303592655762386717
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -126,3 +129,41 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.35, y: 2.1874545, z: 0.2}
   m_Center: {x: 0, y: 1.0937272, z: 0}
+--- !u!95 &1450703086346945512
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312771916335996498}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fffcc59357edb284e936d9c6e4661ff4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!111 &7067500396085781381
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312771916335996498}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: 9af6e714add2bc04c8d5b033165d7d64, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0

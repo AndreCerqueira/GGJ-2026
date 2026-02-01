@@ -27,14 +27,14 @@ namespace Andre.Scripts
 
         private void OnEnable()
         {
-            GameSystem.OnPlayerTurn += OnPlayerTurnStarted;
-            GameSystem.OnEnemyTurn += OnEnemyTurnStarted;
+            GameSystem.Instance.OnPlayerTurn += OnPlayerTurnStarted;
+            GameSystem.Instance.OnEnemyTurn += OnEnemyTurnStarted;
         }
 
         private void OnDisable()
         {
-            GameSystem.OnPlayerTurn -= OnPlayerTurnStarted;
-            GameSystem.OnEnemyTurn -= OnEnemyTurnStarted;
+            GameSystem.Instance.OnPlayerTurn -= OnPlayerTurnStarted;
+            GameSystem.Instance.OnEnemyTurn -= OnEnemyTurnStarted;
         }
 
         private void OnPlayerTurnStarted()

@@ -21,8 +21,8 @@ public class GameSystem : MonoBehaviour
 {
     public static GameSystem Instance { get; private set; }
 
-    public static event Action OnPlayerTurn;
-    public static event System.Action OnEnemyTurn;
+    public event Action OnPlayerTurn;
+    public event System.Action OnEnemyTurn;
     private int _pendingTurnActions = 0;
     [SerializeField] private float _turnStartDelay = 0.15f;
     [SerializeField] private float _turnEndDelay = 0.15f;

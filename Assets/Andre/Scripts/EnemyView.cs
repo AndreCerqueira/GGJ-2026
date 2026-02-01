@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using Andre.Scripts.Masks;
 using Andre.Scripts.Systems;
 using DG.Tweening;
 using UnityEngine;
@@ -29,7 +30,7 @@ namespace Andre.Scripts
             if (!_subscribed)
             {
                 _subscribed = true;
-                GameSystem.OnEnemyTurn += EnemySystem.Instance.ManageEnemiesTurn;
+                GameSystem.Instance.OnEnemyTurn += EnemySystem.Instance.ManageEnemiesTurn;
             }
         }
 
@@ -38,7 +39,7 @@ namespace Andre.Scripts
             if (_subscribed)
             {
                 _subscribed = false;
-                GameSystem.OnEnemyTurn -= EnemySystem.Instance.ManageEnemiesTurn;
+                GameSystem.Instance.OnEnemyTurn -= EnemySystem.Instance.ManageEnemiesTurn;
             }
         }
 
@@ -129,6 +130,10 @@ namespace Andre.Scripts
 
             foreach (var player in PlayerView.AllPlayers)
             {
+                var maskController = player.GetComponent<PlayerMaskController>();
+                if (maskController != null && maskController.CurrentMask is InvisibleMaskEffect)
+                    continue;
+
                 var playerArea = player.GetComponentInParent<AreaView>();
                 if (playerArea == null) continue;
 
