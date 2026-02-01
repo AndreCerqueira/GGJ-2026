@@ -5,11 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14477d0f-ba43-49a7-b3af-c22614c2b999" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/HealthSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/PlagueDoctorMaskEffect.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/PlagueDoctorMaskEffect.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Prefabs/Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/EnemyView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/EnemyView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/PlayerMaskController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/PlayerMaskController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Helder/Sprites/monster.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Helder/Sprites/monster.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Data/NewLogEffect.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Data/NewLogEffect.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Utils/CopiaDaCopia.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Utils/CopiaDaCopia.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Geraldo/Prefabs/Tombstone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Geraldo/Prefabs/Tombstone.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Geraldo/Scripts/GameSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/GameSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Geraldo/Scripts/GameSystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/GameSystem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Geraldo/Scripts/HealthSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Geraldo/Scripts/HealthSystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/HealthSystem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Geraldo/Scripts/SkipTurn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/SkipTurn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Geraldo/Scripts/SkipTurn.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/SkipTurn.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Geraldo/Scripts/Tombstone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/Tombstone.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Geraldo/Scripts/Tombstone.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/Tombstone.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Geraldo/Scripts/TorchLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/TorchLogic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Geraldo/Scripts/TorchLogic.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/TorchLogic.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +43,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/EnemyView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Base/PlayerMaskDisplay.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/JackOLanternEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/PlagueDoctorMaskEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/PlayerMaskController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/PlayerMaskDisplayUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/MoveCounterViewUI.cs" root0="FORCE_HIGHLIGHTING" />
@@ -127,7 +142,7 @@
       <workItem from="1769852998305" duration="9376000" />
       <workItem from="1769873119042" duration="4915000" />
       <workItem from="1769882476612" duration="12155000" />
-      <workItem from="1769906162597" duration="2651000" />
+      <workItem from="1769906162597" duration="4885000" />
     </task>
     <servers />
   </component>
