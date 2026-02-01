@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class ExitManager : MonoBehaviour
 {
-    private static bool player1Saved = false;
-    private static bool player2Saved = false;
+    [HideInInspector] public static bool player1Saved = false;
+    [HideInInspector] public static bool player2Saved = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -43,7 +43,7 @@ public class ExitManager : MonoBehaviour
 
         if (AreAllAlivePlayersSaved())
         {
-            GameSystem.Instance.EndGame();
+            GameSystem.Instance.EndGame(false);
 
             endGame = true;
         }

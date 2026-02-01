@@ -26,7 +26,7 @@ namespace Andre.Scripts
         private void OnScreenButtonClicked()
         {
             _gameStartFeedback?.PlayFeedbacks();
-            _areaViewCreator.Initialize();
+            _areaViewCreator.Initialize(false);
             
             DOVirtual.DelayedCall(1.0f, () =>
             {

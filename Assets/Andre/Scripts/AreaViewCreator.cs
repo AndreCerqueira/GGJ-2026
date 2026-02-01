@@ -34,12 +34,14 @@ namespace Andre.Scripts
 
         private HashSet<Vector2Int> usedCoords = new();
 
-        public void Initialize()
+        public void Initialize(bool onlySurvivers)
         {
             CreateGrid();
 
             usedCoords.Clear();
-            SpawnEntities();
+            PlayerView.AllPlayers.Clear();
+
+            SpawnEntities(onlySurvivers);
             SpawnExit();
             SpawnObstacles();
             MaskSpawnerSystem.Instance.SpawnInitialMasks();
@@ -74,13 +76,22 @@ namespace Andre.Scripts
             }
         }
 
-        private void SpawnEntities()
+        private void SpawnEntities(bool onlySurvivers)
         {
             // Agora usamos os prefabs específicos para cada jogador
-            SpawnAt(_player1Prefab, _player1Coord);
-            usedCoords.Add(_player1Coord);
-            SpawnAt(_player2Prefab, _player2Coord);
-            usedCoords.Add(_player2Coord);
+            if (!onlySurvivers || ExitManager.player1Saved)
+            {
+                ExitManager.player1Saved = false;
+                SpawnAt(_player1Prefab, _player1Coord);
+                usedCoords.Add(_player1Coord);
+            }
+
+            if (!onlySurvivers || ExitManager.player2Saved)
+            {
+                ExitManager.player2Saved = false;
+                SpawnAt(_player2Prefab, _player2Coord);
+                usedCoords.Add(_player2Coord);
+            }
 
             EnemySystem.Instance.SpawnEnemies();
         }

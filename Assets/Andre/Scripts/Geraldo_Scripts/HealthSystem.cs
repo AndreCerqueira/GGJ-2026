@@ -8,20 +8,20 @@ namespace Andre.Scripts
     public class HealthSystem : MonoBehaviour
     {
         public static HealthSystem Instance { get; private set; }
-        
+
         public event Action OnDeath;
 
         [Header("Health")]
-        [SerializeField] private int _lives = 1; 
-        
+        [SerializeField] private int _lives = 1;
+
         [Header("Tombstone & Visuals")]
         [SerializeField] private GameObject _tombstonePrefab;
         [Tooltip("Prefab do jogador a usar ao reviver desta lápide.")]
         [SerializeField] private GameObject _playerPrefabForRespawn;
-        
+
         // --- NOVO CAMPO ---
         [Tooltip("Sprite que representa este jogador morto (para aparecer na lápide).")]
-        [SerializeField] private Sprite _deadSprite; 
+        [SerializeField] private Sprite _deadSprite;
 
         public bool IsDead { get; private set; }
 
@@ -55,25 +55,26 @@ namespace Andre.Scripts
             IsDead = true;
 
             Debug.Log($"[HealthSystem] {gameObject.name} morreu.");
-            
+
             OnDeath?.Invoke();
-            
+
             SpawnTombstone(); // Chama a função atualizada
 
             Destroy(gameObject);
 
+            // Verifica se todos morreram
+            if (AreAllPlayersDead())
+                return;
+
             ExitManager exitManager = FindFirstObjectByType<ExitManager>();
             if (exitManager.VerifyEndGameEscaping())
                 return;
-
-            // Verifica se todos morreram
-            CheckAllPlayersDead();
         }
 
         private void SpawnTombstone()
         {
-            var parent = transform.parent; 
-            
+            var parent = transform.parent;
+
             if (_tombstonePrefab == null)
             {
                 Debug.LogWarning("[HealthSystem] Nenhum prefab de lápide atribuído; a ignorar spawn da lápide.");
@@ -99,7 +100,7 @@ namespace Andre.Scripts
         // ... (Mantém o Kill e CheckAllPlayersDead iguais) ...
         public void Kill() { if (!IsDead) Die(); }
 
-        public bool CheckAllPlayersDead()
+        public bool AreAllPlayersDead()
         {
             var players = PlayerView.AllPlayers;
             if (players == null || players.Count == 0)
