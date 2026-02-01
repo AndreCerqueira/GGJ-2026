@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14477d0f-ba43-49a7-b3af-c22614c2b999" name="Changes" comment="" />
+    <list default="true" id="14477d0f-ba43-49a7-b3af-c22614c2b999" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/AndreScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/AndreScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/GameSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Geraldo_Scripts/GameSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Couto/Fonts/MidnightMinutes_DEMO SDF BUTTON.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Couto/Fonts/MidnightMinutes_DEMO SDF BUTTON.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Couto/Fonts/MidnightMinutes_DEMO SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Couto/Fonts/MidnightMinutes_DEMO SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Couto/Materials/MAT_Shrine.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Couto/Materials/MAT_Shrine.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +28,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/EndTurnButtonViewUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/EnemyView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/ExitClickHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/ExitTransparency.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Base/PlayerMaskDisplay.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/JackOLanternEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/PlagueDoctorMaskEffect.cs" root0="FORCE_HIGHLIGHTING" />
@@ -125,6 +134,7 @@
       <workItem from="1769873119042" duration="4915000" />
       <workItem from="1769882476612" duration="12155000" />
       <workItem from="1769906162597" duration="5318000" />
+      <workItem from="1769951228866" duration="10500000" />
     </task>
     <servers />
   </component>

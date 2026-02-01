@@ -32,6 +32,7 @@ public class GameSystem : MonoBehaviour
     [SerializeField] private float _turnStartDelay = 0.15f;
     [SerializeField] private float _turnEndDelay = 0.15f;
 
+    [SerializeField] private MMF_Player _musicFeedback;
     [Header("Toast Presets")]
     [SerializeField] private ToastPresetSO _playerTurnPreset;
     [SerializeField] private ToastPresetSO _enemyTurnPreset;
@@ -88,6 +89,8 @@ public class GameSystem : MonoBehaviour
                 {
                     AreaViewCreator areaViewCreator = GameObject.FindFirstObjectByType<AreaViewCreator>();
                     areaViewCreator.Initialize(true);
+                    
+                    _musicFeedback?.PlayFeedbacks();
                 });
             }
 
