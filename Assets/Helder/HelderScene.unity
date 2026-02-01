@@ -371,6 +371,7 @@ MonoBehaviour:
   _counterContainer: {fileID: 2082809531}
   _counterText: {fileID: 715386069}
   _playerId: 2
+  _hideFeedback: {fileID: 0}
 --- !u!114 &63031476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3233,6 +3234,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344752329}
   m_CullTransparentMesh: 1
+--- !u!1 &358139709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 358139710}
+  - component: {fileID: 358139711}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &358139710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358139709}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1991578685}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &358139711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358139709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e098453fdff375145910468533f33921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EventSystem
 --- !u!4 &361447111 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2364295876577661482, guid: 3d41d15d90480944691a6744622b0844, type: 3}
@@ -5224,6 +5269,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.MoveCounterViewUI
   _movesText: {fileID: 1791581691}
   _prefix: 'Moves: '
+  _shakeDuration: 0.4
+  _shakeStrength: 0.5
+  _shakeVibrato: 15
 --- !u!1 &610012580
 GameObject:
   m_ObjectHideFlags: 0
@@ -8202,6 +8250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InitialScreenViewUI
   _startButton: {fileID: 807452730896015210}
   _areaViewCreator: {fileID: 402353270}
+  _onboardingPreset: {fileID: 0}
   _gameStartFeedback: {fileID: 863838529}
 --- !u!222 &1064447647
 CanvasRenderer:
@@ -12135,6 +12184,7 @@ MonoBehaviour:
   _counterContainer: {fileID: 652946343}
   _counterText: {fileID: 437423751}
   _playerId: 1
+  _hideFeedback: {fileID: 0}
 --- !u!1 &1803178191
 GameObject:
   m_ObjectHideFlags: 0
@@ -14141,6 +14191,7 @@ Transform:
   - {fileID: 1240873013}
   - {fileID: 845604678}
   - {fileID: 1860905325}
+  - {fileID: 358139710}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1992229244

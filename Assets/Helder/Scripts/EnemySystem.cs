@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemySystem : MonoBehaviour
 {
     public static EnemySystem Instance { get; private set; }
-    
+
     [SerializeField] private AreaViewCreator areaViewCreator;
 
     private enum TypeOfEnemy
@@ -39,7 +39,7 @@ public class EnemySystem : MonoBehaviour
             for (int i = 0; i < count; i++)
             {
                 GameObject newEnemyGO = areaViewCreator.SpawnNewEnemy();
-                
+
                 EnemyView newEnemyView = newEnemyGO.GetComponent<EnemyView>();
                 EnemiesViews.Add(newEnemyView);
 
@@ -69,8 +69,11 @@ public class EnemySystem : MonoBehaviour
         {
             EnemiesViews[i].OnEnemyTurn();
 
-            if (i < EnemiesViews.Count - 1)
-                yield return EnemiesViews[i].WaitEnemyTurn();
+            yield return EnemiesViews[i].WaitEnemyTurn();
         }
+
+        bool theresEvent = Random.Range(0, 5) < 3;
+        if (theresEvent)
+            EventSystem.Instance.MakeEvent();
     }
 }
