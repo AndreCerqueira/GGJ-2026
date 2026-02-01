@@ -5,7 +5,6 @@ using Andre.Scripts.Masks;
 using Andre.Scripts.Systems;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.LightTransport;
 
 namespace Andre.Scripts
 {
