@@ -8647,6 +8647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InitialScreenViewUI
   _startButton: {fileID: 807452730896015210}
   _areaViewCreator: {fileID: 402353270}
+  _onboardingPreset: {fileID: 11400000, guid: ea2b114bc7ef3624697a8acd8b1afb06, type: 2}
   _gameStartFeedback: {fileID: 863838529}
 --- !u!222 &1064447647
 CanvasRenderer:
