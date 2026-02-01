@@ -1,16 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using Andre.Scripts.Masks;
 using Andre.Scripts.Systems;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.LightTransport;
 
 namespace Andre.Scripts
 {
     public class EnemyView : MonoBehaviour
     {
+        [Header("Transparency Settings")]
+        [Tooltip("Referência para o Sprite do inimigo.")]
+        [SerializeField] private SpriteRenderer _renderer;
+        
+        [Tooltip("Distância a partir da qual o inimigo começa a ficar transparente.")]
+        [SerializeField] private float _startFadeDistance = 3f;
+        
+        [Tooltip("Distância onde o inimigo atinge a transparência máxima.")]
+        [SerializeField] private float _maxFadeDistance = 8f;
+        
+        [Tooltip("Valor mínimo de Alpha (0 = invisível, 1 = visível).")]
+        [Range(0f, 1f)]
+        [SerializeField] private float _minAlpha = 0.2f;
+
+        // Variável para guardar a referência do material instanciado
+        private Material _instantiatedMaterial;
+
         private AreaViewCreator areaViewCreator;
         private List<GameObject> lockedSpacesAI = new();
 
@@ -23,6 +38,18 @@ namespace Andre.Scripts
         private void Awake()
         {
             areaViewCreator = FindFirstObjectByType<AreaViewCreator>();
+            
+            if (_renderer == null)
+            {
+                _renderer = GetComponentInChildren<SpriteRenderer>();
+            }
+
+            // Ao acessar .material, o Unity cria uma cópia única para este objeto.
+            // Guardamos a referência para alterar a cor no Update sem criar lixo de memória.
+            if (_renderer != null)
+            {
+                _instantiatedMaterial = _renderer.material;
+            }
         }
 
         private void OnEnable()
@@ -40,6 +67,45 @@ namespace Andre.Scripts
             {
                 _subscribed = false;
                 GameSystem.Instance.OnEnemyTurn -= EnemySystem.Instance.ManageEnemiesTurn;
+            }
+        }
+
+        private void Update()
+        {
+            UpdateTransparency();
+        }
+
+        private void UpdateTransparency()
+        {
+            // Se não houver material instanciado ou jogadores, não faz nada
+            if (_instantiatedMaterial == null || PlayerView.AllPlayers.Count == 0) return;
+
+            float closestDistance = float.MaxValue;
+
+            // 1. Encontra a distância para o jogador mais próximo
+            foreach (var player in PlayerView.AllPlayers)
+            {
+                if (player == null) continue;
+
+                float dist = Vector3.Distance(transform.position, player.transform.position);
+                if (dist < closestDistance)
+                {
+                    closestDistance = dist;
+                }
+            }
+
+            // 2. Calcula o Alpha baseado na distância
+            float t = Mathf.InverseLerp(_startFadeDistance, _maxFadeDistance, closestDistance);
+            float targetAlpha = Mathf.Lerp(1f, _minAlpha, t);
+
+            // 3. Aplica a cor DIRETAMENTE no material instanciado
+            Color currentColor = _instantiatedMaterial.color;
+            
+            // Só aplica se houver mudança significativa para poupar processamento
+            if (Mathf.Abs(currentColor.a - targetAlpha) > 0.01f)
+            {
+                currentColor.a = targetAlpha;
+                _instantiatedMaterial.color = currentColor;
             }
         }
 
@@ -106,7 +172,6 @@ namespace Andre.Scripts
 
         private void MoveToArea(AreaView targetArea)
         {
-            // Security check: if somehow we try to move to an obstacle, abort
             if (IsBlockedByObstacle(targetArea)) return;
 
             if (targetArea.IsOccupied)
@@ -116,9 +181,6 @@ namespace Andre.Scripts
                 {
                     var hs = p.GetComponent<HealthSystem>();
                     if (hs != null) hs.Kill();
-
-                    if (GameSystem.gameEnd)
-                        return;
                 }
             }
 
@@ -173,7 +235,6 @@ namespace Andre.Scripts
                 if (IsValidMove(current - dirY))
                 {
                     LockSpaceAIMovement(current);
-
                     return -dirY;
                 }
 
