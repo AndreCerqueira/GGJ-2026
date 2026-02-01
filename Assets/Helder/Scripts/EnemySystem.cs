@@ -72,7 +72,7 @@ public class EnemySystem : MonoBehaviour
             yield return EnemiesViews[i].WaitEnemyTurn();
         }
 
-        bool theresEvent = Random.Range(0, 5) < 2;
+        bool theresEvent = Random.Range(0, 5) == 0;
         if (theresEvent)
             EventSystem.Instance.AddEventEffect();
     }
