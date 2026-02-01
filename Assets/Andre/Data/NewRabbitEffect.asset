@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.Masks.RabbitMaskEffect
   _maskSprite: {fileID: 21300000, guid: 8db1f50d43474fe4987759d3b5cc92a2, type: 3}
   _duration: 2
+  _effectPreset: {fileID: 0}
+  _message: As the start of your turn, you have +2 moves!
   _extraMoves: 2

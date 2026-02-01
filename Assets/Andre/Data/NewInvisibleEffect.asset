@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.Masks.InvisibleMaskEffect
   _maskSprite: {fileID: 21300000, guid: 98b87df91d527fd408a5e14915361df7, type: 3}
   _duration: 3
+  _effectPreset: {fileID: 0}
+  _message: This character is now invisible for monsters.
