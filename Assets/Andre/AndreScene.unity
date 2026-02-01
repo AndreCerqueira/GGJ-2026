@@ -2201,6 +2201,9 @@ MonoBehaviour:
   _maskEffects:
   - {fileID: 11400000, guid: c9825512955bc5f49835dc091c594264, type: 2}
   - {fileID: 11400000, guid: 0f3500be98660ad4b8074aca51a7870a, type: 2}
+  - {fileID: 11400000, guid: 82f65aeccd50e4f439268d4ddbce5999, type: 2}
+  - {fileID: 11400000, guid: 1edd86ff4ca395c45b7db57523d07ead, type: 2}
+  - {fileID: 11400000, guid: c8eddfeed6f29db45a14e7567f9c1bb2, type: 2}
   _maxMasks: 5
 --- !u!1 &278255091
 GameObject:
