@@ -11,20 +11,24 @@ namespace Andre.Scripts
         private PlayerMaskDisplay _worldDisplay;
         private PlayerMaskDisplayUI _uiDisplay;
 
+        public MaskEffect CurrentMask => _currentMask; // <--- ADD THIS
+
         private void Awake()
         {
             _worldDisplay = GetComponentInChildren<PlayerMaskDisplay>();
         }
 
+        // ... resto do código igual ...
+        
         private void Start()
         {
             FindMyUiDisplay();
-            GameSystem.OnPlayerTurn += OnPlayerTurn;
+            GameSystem.Instance.OnPlayerTurn += OnPlayerTurn;
         }
 
         private void OnDestroy()
         {
-            GameSystem.OnPlayerTurn -= OnPlayerTurn;
+            GameSystem.Instance.OnPlayerTurn -= OnPlayerTurn;
         }
 
         private void FindMyUiDisplay()

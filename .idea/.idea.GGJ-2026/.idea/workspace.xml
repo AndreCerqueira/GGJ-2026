@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="14477d0f-ba43-49a7-b3af-c22614c2b999" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/AndreScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/AndreScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Prefabs/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/EnemyView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/EnemyView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/PlayerMaskController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/PlayerMaskController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Helder/Sprites/monster.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Helder/Sprites/monster.png.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,6 +127,7 @@
       <workItem from="1769852998305" duration="9376000" />
       <workItem from="1769873119042" duration="4915000" />
       <workItem from="1769882476612" duration="12155000" />
+      <workItem from="1769906162597" duration="2651000" />
     </task>
     <servers />
   </component>
