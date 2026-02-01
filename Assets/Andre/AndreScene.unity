@@ -20,8 +20,8 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.33918744, g: 0.44025147, b: 0.4214014, a: 1}
-  m_AmbientEquatorColor: {r: 0.76148087, g: 0.8210893, b: 0.8679245, a: 1}
+  m_AmbientSkyColor: {r: 0.22688974, g: 0.3018868, b: 0.2874643, a: 1}
+  m_AmbientEquatorColor: {r: 0.407025, g: 0.47440103, b: 0.5283019, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 0
   m_AmbientMode: 1
@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
+  m_LightingDataAsset: {fileID: 0}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 2a92d363ee5e1fe4b9b1d41bd83a056e, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -1710,7 +1710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a83d2f7ae04ab6f4f99b0d85377be998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.ProbeVolumePerSceneData
-  serializedBakingSet: {fileID: 11400000, guid: 281b11adaaf243040bc7671c01c20b59, type: 2}
+  serializedBakingSet: {fileID: 0}
   sceneGUID: 9ef9ba85888086e4dabdd156c21b2039
   obsoleteAsset: {fileID: 0}
   obsoleteCellSharedDataAsset: {fileID: 0}
@@ -2025,7 +2025,7 @@ MonoBehaviour:
   lowestSubdivLevelOverride: 0
   highestSubdivLevelOverride: 7
   overridesSubdivLevels: 0
-  mightNeedRebaking: 0
+  mightNeedRebaking: 1
   cachedTransform:
     e00: 0.36837837
     e01: 0
@@ -2201,9 +2201,6 @@ MonoBehaviour:
   _maskEffects:
   - {fileID: 11400000, guid: c9825512955bc5f49835dc091c594264, type: 2}
   - {fileID: 11400000, guid: 0f3500be98660ad4b8074aca51a7870a, type: 2}
-  - {fileID: 11400000, guid: 82f65aeccd50e4f439268d4ddbce5999, type: 2}
-  - {fileID: 11400000, guid: 1edd86ff4ca395c45b7db57523d07ead, type: 2}
-  - {fileID: 11400000, guid: c8eddfeed6f29db45a14e7567f9c1bb2, type: 2}
   _maxMasks: 5
 --- !u!1 &278255091
 GameObject:
@@ -9049,15 +9046,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6317672751797125516, guid: 9311617b76dd8d049b198314d66ddeb5, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.48079583
+      value: 0.5212874
       objectReference: {fileID: 0}
     - target: {fileID: 6317672751797125516, guid: 9311617b76dd8d049b198314d66ddeb5, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.49056602
+      value: 0.5283019
       objectReference: {fileID: 0}
     - target: {fileID: 6317672751797125516, guid: 9311617b76dd8d049b198314d66ddeb5, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.46125546
+      value: 0.49673668
       objectReference: {fileID: 0}
     - target: {fileID: 6317672751797125516, guid: 9311617b76dd8d049b198314d66ddeb5, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.atime1
