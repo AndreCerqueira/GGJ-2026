@@ -7,7 +7,8 @@ public class EventSystem : MonoBehaviour
 
     private enum EventType
     {
-        ForgottenRelics
+        ForgottenRelics,
+        SharedResolve
     }
     private static readonly int EventTypeCount = System.Enum.GetValues(typeof(EventType)).Length;
 
@@ -26,6 +27,9 @@ public class EventSystem : MonoBehaviour
                 int numberOfMasks = Random.Range(1, 3);
                 for (var i = 0; i < numberOfMasks; i++)
                     MaskSpawnerSystem.Instance.SpawnNewMask();
+                break;
+            case EventType.SharedResolve:
+
                 break;
         }
     }
