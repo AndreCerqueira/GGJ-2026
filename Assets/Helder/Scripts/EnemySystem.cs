@@ -21,14 +21,16 @@ public class EnemySystem : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
-        enemiesToSpawn = new Dictionary<TypeOfEnemy, int>() { 
-            { TypeOfEnemy.Moves2, 1 }, 
-            { TypeOfEnemy.Moves1, 1 } };
     }
 
     public void SpawnEnemies()
     {
+        int numOfEnemiesMoves2 = (int)((GameSystem.turnNum + 1) / 2f);
+        int numOfEnemiesMoves1 = (GameSystem.turnNum + 1) % 2;
+        enemiesToSpawn = new Dictionary<TypeOfEnemy, int>() {
+            { TypeOfEnemy.Moves2, numOfEnemiesMoves2 },
+            { TypeOfEnemy.Moves1, numOfEnemiesMoves1 } };
+
         foreach (var entry in enemiesToSpawn)
         {
             TypeOfEnemy enemyType = entry.Key;

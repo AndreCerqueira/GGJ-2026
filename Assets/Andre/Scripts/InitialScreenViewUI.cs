@@ -25,6 +25,8 @@ namespace Andre.Scripts
         
         private void OnScreenButtonClicked()
         {
+            GameSystem.turnNum = 1;
+
             _gameStartFeedback?.PlayFeedbacks();
             _areaViewCreator.Initialize(false);
             

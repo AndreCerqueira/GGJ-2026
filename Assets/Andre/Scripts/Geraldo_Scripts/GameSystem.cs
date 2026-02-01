@@ -24,6 +24,8 @@ public class GameSystem : MonoBehaviour
 {
     public static GameSystem Instance { get; private set; }
 
+    [HideInInspector] public static int turnNum = 1;
+
     public event Action OnPlayerTurn;
     public event System.Action OnEnemyTurn;
     private int _pendingTurnActions = 0;
@@ -76,6 +78,8 @@ public class GameSystem : MonoBehaviour
 
             if (!allDied)
             {
+                GameSystem.turnNum++;
+
                 GameObject startGameFeedbackGO = GameObject.Find("START_GAME_FEEDBACK");
                 MMF_Player mmfPlayer = startGameFeedbackGO.GetComponent<MMF_Player>();
                 mmfPlayer.PlayFeedbacks();
@@ -209,7 +213,14 @@ public class GameSystem : MonoBehaviour
         state = GameState.LOSE;
         DeadScreen();
 
-        Instance.EndGame(true);
+        GameObject gameOverFeedbackGO = GameObject.Find("SHOW_GAMEOVER_FEEDBACK");
+        MMF_Player mmfPlayer = gameOverFeedbackGO.GetComponent<MMF_Player>();
+        mmfPlayer.PlayFeedbacks();
+
+        DOVirtual.DelayedCall(3f, () =>
+        {
+            Instance.EndGame(true);
+        });
     }
 
     public void EndGame(bool allDead)
