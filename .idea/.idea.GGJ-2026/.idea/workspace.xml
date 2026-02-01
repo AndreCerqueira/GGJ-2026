@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14477d0f-ba43-49a7-b3af-c22614c2b999" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/TeleportMaskEffect.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/TeleportMaskEffect.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/AndreScene/AndreScene Baking Set.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/AndreScene/AndreScene Baking Set.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Prefabs/ObstacleView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Prefabs/ObstacleView.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/PlayerView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/PlayerView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Utils/CopiaDaCopia.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Utils/CopiaDaCopia.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Andre/Utils/CopiaDaCopia.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Utils/CopiaDaCopia.unity.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
