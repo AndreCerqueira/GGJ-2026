@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 6799798330613310643}
   - component: {fileID: 1992195020205649245}
   - component: {fileID: 6030539275002857951}
+  - component: {fileID: 5492267678101861694}
   m_Layer: 0
   m_Name: exitPrefab
   m_TagString: Untagged
@@ -262,7 +263,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.82, y: 4.2744875, z: 0.82}
+  m_Size: {x: 1, y: 4.2744875, z: 1}
   m_Center: {x: 0, y: 1.7272443, z: 0}
 --- !u!54 &1992195020205649245
 Rigidbody:
@@ -321,6 +322,18 @@ MonoBehaviour:
   _startFadeDistance: 2
   _maxFadeDistance: 5
   _minAlpha: 0
+--- !u!114 &5492267678101861694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922052929155601965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd1cd77a8404971a7caf9106645c439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.ExitClickHandler
 --- !u!1 &1720170581690210222
 GameObject:
   m_ObjectHideFlags: 0
