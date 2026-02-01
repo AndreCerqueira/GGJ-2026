@@ -40,5 +40,9 @@ namespace Andre.Scripts.Masks
                 AreaMovementSystem.Instance.playerMoves += _extraMoves;
             }
         }
+
+        public override void OnRemove(GameObject target)
+        {
+        }
     }
 }
