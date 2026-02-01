@@ -11,5 +11,7 @@ namespace Andre.Scripts.Masks.Base
         public int Duration => _duration;
         
         public abstract void Execute(GameObject target);
+        
+        public virtual void OnTurnStart(GameObject target) { }
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1540715406668213565}
   - component: {fileID: 8933219624898456247}
   - component: {fileID: 3649056832611211639}
+  - component: {fileID: 7635440506224417835}
   m_Layer: 0
   m_Name: Tombstone
   m_TagString: Untagged
@@ -112,3 +113,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7635440506224417835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7277841207646078753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 685cd963d3f8bd14da3053d8ebf8c429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tombstone
+  id: -1
+  PlayerPrefab: {fileID: 0}
+  OriginalPlayerName: 
+  Player1Prefab: {fileID: 6312771916335996498, guid: c754d745f678ff14783554529f0ea06e, type: 3}
+  Player2Prefab: {fileID: 6312771916335996498, guid: e5ede71f4335d9048a0675c5c1f422c5, type: 3}
