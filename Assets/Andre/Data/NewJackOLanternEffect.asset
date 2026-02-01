@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.Masks.JackOLanternEffect
   _maskSprite: {fileID: 21300000, guid: 8c8c407f33f3a9240b9019106e4540e9, type: 3}
   _duration: 5
-  _intensityBoost: 50
+  _intensityBoost: 200

@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Andre.Scripts.Systems;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 namespace Andre.Scripts
@@ -22,6 +23,8 @@ namespace Andre.Scripts
         // --- NOVO CAMPO ---
         [Tooltip("Sprite que representa este jogador morto (para aparecer na lápide).")]
         [SerializeField] private Sprite _deadSprite;
+        
+        [SerializeField] private MMF_Player _deathFeedback;
 
         public bool IsDead { get; private set; }
 
@@ -55,6 +58,8 @@ namespace Andre.Scripts
             IsDead = true;
 
             Debug.Log($"[HealthSystem] {gameObject.name} morreu.");
+            
+            _deathFeedback?.PlayFeedbacks();
 
             OnDeath?.Invoke();
 

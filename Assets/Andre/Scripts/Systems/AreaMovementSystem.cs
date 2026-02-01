@@ -13,7 +13,8 @@ namespace Andre.Scripts.Systems
         private AreaView _currentSelectedArea;
         private List<AreaView> _highlightedAreas = new List<AreaView>();
 
-        public int playerMoves = 3;
+    [SerializeField] private int _defaultPlayerMoves = 3;
+    public int playerMoves = 3;
 
         private const float _moveDuration = 0.4f;
         private const float _scaleMultiplier = 1.05f;
@@ -84,9 +85,31 @@ namespace Andre.Scripts.Systems
                 .OnComplete(() =>
                 {
                     TryPickMask(area);
-                    if (playerMoves <= 0) Deselect();
-                    else SelectPlayer(_selectedPlayer);
+
+                    // End turn if the player has no moves after immediate effects (masks with OnPickup should have applied).
+                    if (EndTurnIfNoMoves()) return;
+
+                    SelectPlayer(_selectedPlayer);
                 });
+        }
+
+        /// <summary>
+        /// Ends the player's turn immediately if they have no moves left.
+        /// Returns true if the turn was ended.
+        /// </summary>
+        public bool EndTurnIfNoMoves()
+        {
+            if (playerMoves <= 0)
+            {
+                Deselect();
+                playerMoves = _defaultPlayerMoves;
+
+                var varGs = _gameSystem ?? GameSystem.GetOrFindInstance();
+                if (varGs != null) varGs.EnemyTurn();
+                return true;
+            }
+
+            return false;
         }
 
         private void Deselect()
