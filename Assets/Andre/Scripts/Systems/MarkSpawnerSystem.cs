@@ -53,7 +53,7 @@ namespace Andre.Scripts
             SpawnNewMask();
         }
 
-        private void SpawnNewMask()
+        public void SpawnNewMask()
         {
             if (_maskEffects == null || _maskEffects.Count == 0) return;
 
