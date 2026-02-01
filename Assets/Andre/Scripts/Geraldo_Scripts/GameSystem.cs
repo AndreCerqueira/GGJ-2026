@@ -66,22 +66,28 @@ public class GameSystem : MonoBehaviour
     public GameState state;
 
     public static bool gameEnd = false;
+    private static bool allDied = false;
 
     public void Awake()
     {
-        if (gameEnd)
+        if (gameEnd || allDied)
         {
             gameEnd = false;
-            
-            GameObject startGameFeedbackGO = GameObject.Find("START_GAME_FEEDBACK");
-            MMF_Player mmfPlayer = startGameFeedbackGO.GetComponent<MMF_Player>();
-            mmfPlayer.PlayFeedbacks();
 
-            DOVirtual.DelayedCall(1f, () =>
+            if (!allDied)
             {
-                AreaViewCreator areaViewCreator = GameObject.FindFirstObjectByType<AreaViewCreator>();
-                areaViewCreator.Initialize();
-            });
+                GameObject startGameFeedbackGO = GameObject.Find("START_GAME_FEEDBACK");
+                MMF_Player mmfPlayer = startGameFeedbackGO.GetComponent<MMF_Player>();
+                mmfPlayer.PlayFeedbacks();
+
+                DOVirtual.DelayedCall(1f, () =>
+                {
+                    AreaViewCreator areaViewCreator = GameObject.FindFirstObjectByType<AreaViewCreator>();
+                    areaViewCreator.Initialize(true);
+                });
+            }
+
+            allDied = false;
         }
 
         if (Instance != null && Instance != this)
@@ -107,7 +113,7 @@ public class GameSystem : MonoBehaviour
     {
         state = GameState.START;
         Debug.Log("Game Started!");
-        
+
         PlayerTurn();
     }
 
@@ -201,18 +207,18 @@ public class GameSystem : MonoBehaviour
     public void LoseGame()
     {
         state = GameState.LOSE;
-        Debug.Log("You Lose!");
         DeadScreen();
 
-        Instance.EndGame();
+        Instance.EndGame(true);
     }
 
-    public void EndGame()
+    public void EndGame(bool allDead)
     {
-        gameEnd = true;
+        allDied = allDead;
+        gameEnd = !allDied;
 
         StopAllCoroutines();
-        
+
         GameObject startGameFeedbackGO = GameObject.Find("RELOAD_SCENE_FEEDBACK");
         MMF_Player mmfPlayer = startGameFeedbackGO.GetComponent<MMF_Player>();
         mmfPlayer.PlayFeedbacks();
