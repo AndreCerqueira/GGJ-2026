@@ -107,6 +107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f22bf8e0ff641d39c878c16f212add2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.EnemyView
+  _renderer: {fileID: 0}
+  _startFadeDistance: 2
+  _maxFadeDistance: 5
+  _minAlpha: 0
   MOVES_PER_TURN: 2
 --- !u!65 &-6303592655762386717
 BoxCollider:
