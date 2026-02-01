@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Andre.Scripts.Systems;
 using UnityEngine;
@@ -7,6 +8,8 @@ namespace Andre.Scripts
     public class HealthSystem : MonoBehaviour
     {
         public static HealthSystem Instance { get; private set; }
+        
+        public event Action OnDeath;
 
         [Header("Health")]
         [SerializeField] private int _lives = 1; 
@@ -52,6 +55,8 @@ namespace Andre.Scripts
             IsDead = true;
 
             Debug.Log($"[HealthSystem] {gameObject.name} morreu.");
+            
+            OnDeath?.Invoke();
             
             SpawnTombstone(); // Chama a função atualizada
 

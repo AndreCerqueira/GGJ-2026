@@ -11,24 +11,45 @@ namespace Andre.Scripts
         private PlayerMaskDisplay _worldDisplay;
         private PlayerMaskDisplayUI _uiDisplay;
 
-        public MaskEffect CurrentMask => _currentMask; // <--- ADD THIS
+        public MaskEffect CurrentMask => _currentMask;
 
         private void Awake()
         {
             _worldDisplay = GetComponentInChildren<PlayerMaskDisplay>();
         }
 
-        // ... resto do código igual ...
-        
         private void Start()
         {
             FindMyUiDisplay();
             GameSystem.Instance.OnPlayerTurn += OnPlayerTurn;
+
+            // Subscreve ao evento de morte do HealthSystem deste player específico
+            var varHealth = GetComponent<HealthSystem>();
+            if (varHealth != null)
+            {
+                varHealth.OnDeath += OnPlayerDeath;
+            }
         }
 
         private void OnDestroy()
         {
             GameSystem.Instance.OnPlayerTurn -= OnPlayerTurn;
+
+            // Limpa a subscrição para evitar erros de memória
+            var varHealth = GetComponent<HealthSystem>();
+            if (varHealth != null)
+            {
+                varHealth.OnDeath -= OnPlayerDeath;
+            }
+        }
+
+        private void OnPlayerDeath()
+        {
+            // Quando este player morre, dá hide apenas na sua UI correspondente
+            if (_uiDisplay != null)
+            {
+                _uiDisplay.Hide();
+            }
         }
 
         private void FindMyUiDisplay()
@@ -61,7 +82,6 @@ namespace Andre.Scripts
             if (_currentMask == null) return;
             
             _currentMask.OnTurnStart(gameObject);
-
             _currentDuration--;
 
             if (_currentDuration <= 0)
