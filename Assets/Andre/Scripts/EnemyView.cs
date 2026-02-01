@@ -23,6 +23,11 @@ namespace Andre.Scripts
         [Range(0f, 1f)]
         [SerializeField] private float _minAlpha = 0.2f;
 
+        [Header("Proximity Feedback")]
+        [SerializeField] private MoreMountains.Feedbacks.MMF_Player _onNearPlayerFeedback;
+        [SerializeField] private float _feedbackDistanceThreshold = 2f; 
+        private bool _isNearPlayer;
+        
         // Variável para guardar a referência do material instanciado
         private Material _instantiatedMaterial;
 
@@ -77,37 +82,53 @@ namespace Andre.Scripts
 
         private void UpdateTransparency()
         {
-            // Se não houver material instanciado ou jogadores, não faz nada
             if (_instantiatedMaterial == null || PlayerView.AllPlayers.Count == 0) return;
 
-            float closestDistance = float.MaxValue;
+            var varClosestDistance = float.MaxValue;
 
-            // 1. Encontra a distância para o jogador mais próximo
-            foreach (var player in PlayerView.AllPlayers)
+            foreach (var varPlayer in PlayerView.AllPlayers)
             {
-                if (player == null) continue;
+                if (varPlayer == null) continue;
 
-                float dist = Vector3.Distance(transform.position, player.transform.position);
-                if (dist < closestDistance)
+                var varDist = Vector3.Distance(transform.position, varPlayer.transform.position);
+                if (varDist < varClosestDistance)
                 {
-                    closestDistance = dist;
+                    varClosestDistance = varDist;
                 }
             }
 
-            // 2. Calcula o Alpha baseado na distância
-            float t = Mathf.InverseLerp(_startFadeDistance, _maxFadeDistance, closestDistance);
-            float targetAlpha = Mathf.Lerp(1f, _minAlpha, t);
+            UpdateProximityFeedback(varClosestDistance);
 
-            // 3. Aplica a cor DIRETAMENTE no material instanciado
-            Color currentColor = _instantiatedMaterial.color;
-            
-            // Só aplica se houver mudança significativa para poupar processamento
-            if (Mathf.Abs(currentColor.a - targetAlpha) > 0.01f)
+            var varT = Mathf.InverseLerp(_startFadeDistance, _maxFadeDistance, varClosestDistance);
+            var varTargetAlpha = Mathf.Lerp(1f, _minAlpha, varT);
+
+            var varCurrentColor = _instantiatedMaterial.color;
+    
+            if (Mathf.Abs(varCurrentColor.a - varTargetAlpha) > 0.01f)
             {
-                currentColor.a = targetAlpha;
-                _instantiatedMaterial.color = currentColor;
+                varCurrentColor.a = varTargetAlpha;
+                _instantiatedMaterial.color = varCurrentColor;
             }
         }
+
+        private void UpdateProximityFeedback(float distance)
+        {
+            if (distance <= _feedbackDistanceThreshold)
+            {
+                if (!_isNearPlayer)
+                {
+                    _isNearPlayer = true;
+                    if (_onNearPlayerFeedback != null) 
+                    {
+                        _onNearPlayerFeedback.PlayFeedbacks();
+                    }
+                }
+            }
+            else
+            {
+                _isNearPlayer = false;
+            }
+        }   
 
         public void OnEnemyTurn()
         {

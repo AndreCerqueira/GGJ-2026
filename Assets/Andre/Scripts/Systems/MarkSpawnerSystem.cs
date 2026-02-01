@@ -16,6 +16,8 @@ namespace Andre.Scripts
         [SerializeField] private int _maxMasks = 3;
 
         private List<GameObject> _activeMasks = new List<GameObject>();
+        
+        [SerializeField] private MoreMountains.Feedbacks.MMF_Player _onPickupFeedback;
 
         private void Awake()
         {
@@ -38,6 +40,8 @@ namespace Andre.Scripts
             if (varMaskInstance != null && varMaskInstance.Effect != null)
             {
                 Debug.Log($"[MaskSpawnerSystem] Player picked up mask with effect: {varMaskInstance.Effect.name}");
+                
+                _onPickupFeedback?.PlayFeedbacks();
                 // Aplica o efeito imediato
                 MaskEffectSystem.Instance.TriggerEffect(varMaskInstance.Effect, area.gameObject);
 
