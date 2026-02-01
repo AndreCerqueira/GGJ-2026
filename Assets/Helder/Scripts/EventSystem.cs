@@ -42,23 +42,23 @@ public class EventSystem : MonoBehaviour
         switch (chosenEvent)
         {
             case EventType.ForgottenRelics:
-                ToastSystem.Instance.Show("Forgotten Relics", _eventToastPreset);
+                ToastSystem.Instance.Show("Forgotten Relics\nSpawn extra Masks", _eventToastPreset);
                 int numberOfMasks = Random.Range(1, 3);
                 for (var i = 0; i < numberOfMasks; i++)
                     MaskSpawnerSystem.Instance.SpawnNewMask();
                 break;
             case EventType.SharedResolve:
-                ToastSystem.Instance.Show("Shared Resolve", _eventToastPreset);
+                ToastSystem.Instance.Show("Shared Resolve\nMove 1 More", _eventToastPreset);
                 activeEvents[chosenEvent] = 1;
                 AreaMovementSystem.Instance.playerMoves++;
                 break;
             case EventType.CrushingPresence:
-                ToastSystem.Instance.Show("Crushing Presence", _eventToastPreset);
+                ToastSystem.Instance.Show("Crushing Presence\nMove 1 Less", _eventToastPreset);
                 activeEvents[chosenEvent] = 1;
                 AreaMovementSystem.Instance.playerMoves--;
                 break;
             case EventType.DistortedReality:
-                ToastSystem.Instance.Show("Distorted Reality", _eventToastPreset);
+                ToastSystem.Instance.Show("Distorted Reality\nTeleport All Matter", _eventToastPreset);
                 //Teleport to random tiles:
                 //players
                 PlayerView[] playersViews = FindObjectsByType<PlayerView>(FindObjectsSortMode.None);
@@ -85,7 +85,7 @@ public class EventSystem : MonoBehaviour
                 }
                 break;
             case EventType.PredatoryLeap:
-                ToastSystem.Instance.Show("Predatory Leap", _eventToastPreset);
+                ToastSystem.Instance.Show("Predatory Leap\nJumps to the nearest child", _eventToastPreset);
                 TryEnemyTwoCellJump();
                 break;
         }
