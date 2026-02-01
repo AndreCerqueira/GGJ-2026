@@ -1,5 +1,7 @@
 ﻿using Andre.Scripts.Masks.Base;
 using Andre.Scripts.Systems;
+using Andre.Scripts.Toasts;
+using Andre.Scripts.UI;
 using UnityEngine;
 
 namespace Andre.Scripts.Masks
@@ -7,10 +9,17 @@ namespace Andre.Scripts.Masks
     [CreateAssetMenu(fileName = "NewRabbitEffect", menuName = "Effects/Rabbit Effect")]
     public class RabbitMaskEffect : MaskEffect
     {
+        [SerializeField] private ToastPresetSO _effectPreset;
+        [SerializeField] private string _message = "";
+        
         [SerializeField] private int _extraMoves = 2;
 
         public override void Execute(GameObject target)
         {
+            if (ToastSystem.Instance != null)
+            {
+                ToastSystem.Instance.Show(_message, _effectPreset);
+            }
         }
 
         public override void OnTurnStart(GameObject target)
