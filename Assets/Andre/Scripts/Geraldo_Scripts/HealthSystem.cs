@@ -69,6 +69,10 @@ namespace Andre.Scripts
             // Destrói o GameObject do jogador, removendo-o da cena e dos registos
             Destroy(gameObject);
 
+            ExitManager exitManager = FindFirstObjectByType<ExitManager>();
+            if (exitManager.VerifyEndGameEscaping())
+                return;
+
             // Verifica se todos morreram
             CheckAllPlayersDead();
         }

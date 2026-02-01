@@ -116,6 +116,9 @@ namespace Andre.Scripts
                 {
                     var hs = p.GetComponent<HealthSystem>();
                     if (hs != null) hs.Kill();
+
+                    if (GameSystem.gameEnd)
+                        return;
                 }
             }
 
@@ -150,7 +153,6 @@ namespace Andre.Scripts
 
         private Vector2Int GetBestDirection(Vector2Int current, Vector2Int target)
         {
-            Debug.Log("Current: " + current);
             var diff = target - current;
             var tryHorizontal = Mathf.Abs(diff.x) > Mathf.Abs(diff.y);
 

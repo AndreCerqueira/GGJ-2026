@@ -10038,6 +10038,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.UI.PlayerMaskDisplayUI
   _maskImage: {fileID: 63031476}
+  _counterContainer: {fileID: 0}
+  _counterText: {fileID: 0}
   _playerId: 2
 --- !u!114 &63031476
 MonoBehaviour:
@@ -15466,8 +15468,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b2299e31f94607aabb3d6a5f767207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.Systems.MaskSpawnerSystem
-  _maskPrefabs:
-  - {fileID: 6742192194321614249, guid: f8e9380880259a24aa9890fb25a25993, type: 3}
+  _maskInstancePrefab: {fileID: 0}
+  _maskEffects: []
   _maxMasks: 5
 --- !u!1 &278255091
 GameObject:
@@ -21436,6 +21438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Game.World.AreaViewCreator
   _areaPrefab: {fileID: -2792115933525323744, guid: 625d74981bf5d63469c0932cefd8ce6a, type: 3}
   _obstaclePrefab: {fileID: 4728583557658436105, guid: fe64c52e65828a7498a2f2b850653b79, type: 3}
+  _exitPrefab: {fileID: 922052929155601965, guid: 673c81703c1198f43b1533c91823ac5a, type: 3}
   _player1Prefab: {fileID: 6312771916335996498, guid: c754d745f678ff14783554529f0ea06e, type: 3}
   _player2Prefab: {fileID: 6312771916335996498, guid: e5ede71f4335d9048a0675c5c1f422c5, type: 3}
   _enemyPrefab: {fileID: 6312771916335996498, guid: 37481bea4f7e39e4a90a38831a4b1336, type: 3}
@@ -71359,6 +71362,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.UI.PlayerMaskDisplayUI
   _maskImage: {fileID: 1801265540}
+  _counterContainer: {fileID: 0}
+  _counterText: {fileID: 0}
   _playerId: 1
 --- !u!1 &1803178191
 GameObject:

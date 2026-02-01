@@ -10,6 +10,7 @@ namespace Andre.Scripts
         [Header("Prefabs - Environment")]
         [SerializeField] private AreaView _areaPrefab;
         [SerializeField] private GameObject _obstaclePrefab;
+        [SerializeField] private GameObject _exitPrefab;
 
         [Header("Prefabs - Characters")]
         [SerializeField] private GameObject _player1Prefab; // Prefab do Jogador 1
@@ -26,6 +27,7 @@ namespace Andre.Scripts
         [SerializeField] private Vector2Int _player2Coord = new Vector2Int(0, 1);
         [SerializeField] private Vector2Int _enemyCoord = new Vector2Int(6, 6);
         private const int MIN_ENEMY_DISTANCE = 4;
+        private const int MIN_EXIT_DISTANCE = 6;
 
         private const float _animDuration = 0.5f;
         private const float _delayStep = 0.05f;
@@ -38,6 +40,7 @@ namespace Andre.Scripts
 
             usedCoords.Clear();
             SpawnEntities();
+            SpawnExit();
             SpawnObstacles();
             MaskSpawnerSystem.Instance.SpawnInitialMasks();
 
@@ -80,6 +83,59 @@ namespace Andre.Scripts
             usedCoords.Add(_player2Coord);
 
             EnemySystem.Instance.SpawnEnemies();
+        }
+
+        private void SpawnExit()
+        {
+            Vector2Int exitCoord = PickExitCoord(usedCoords);
+            GameObject exit = SpawnAt(_exitPrefab, exitCoord, true);
+            exit.transform.parent = exit.transform.parent.parent;
+            exit.transform.rotation = _exitPrefab.transform.rotation;
+            exit.transform.localScale = _exitPrefab.transform.localScale;
+            usedCoords.Add(new(exitCoord.x, exitCoord.y));
+        }
+
+        private Vector2Int PickExitCoord(HashSet<Vector2Int> usedCoords)
+        {
+            const int maxAttempts = 100;
+            int attempts = 0;
+
+            while (attempts < maxAttempts)
+            {
+                // Pick a random side: 0=left, 1=right, 2=bottom, 3=top
+                int side = Random.Range(0, 4);
+
+                Vector2Int coord = side switch
+                {
+                    0 => new Vector2Int(0, Random.Range(0, _gridSize)),
+                    1 => new Vector2Int(_gridSize - 1, Random.Range(0, _gridSize)),
+                    2 => new Vector2Int(Random.Range(0, _gridSize), 0),
+                    _ => new Vector2Int(Random.Range(0, _gridSize), _gridSize - 1)
+                };
+
+                if (usedCoords.Contains(coord))
+                {
+                    attempts++;
+                    continue;
+                }
+
+                if (GridDistance(coord, _player1Coord) < MIN_EXIT_DISTANCE)
+                {
+                    attempts++;
+                    continue;
+                }
+
+                if (GridDistance(coord, _player2Coord) < MIN_EXIT_DISTANCE)
+                {
+                    attempts++;
+                    continue;
+                }
+
+                return coord;
+            }
+
+            Debug.LogWarning("Could not find valid exit coord, using fallback.");
+            return new Vector2Int(_gridSize - 1, _gridSize - 1);
         }
 
         public GameObject SpawnNewEnemy()
@@ -155,7 +211,7 @@ namespace Andre.Scripts
             }
         }
 
-        public GameObject SpawnAt(GameObject prefab, Vector2Int coord)
+        public GameObject SpawnAt(GameObject prefab, Vector2Int coord, bool dontAnimate = false)
         {
             if (prefab == null)
             {
@@ -166,7 +222,9 @@ namespace Andre.Scripts
             if (!GridSystem.Instance.TryGetArea(coord, out var targetArea)) return null;
 
             var entity = Instantiate(prefab, targetArea.CharacterContainer);
-            AnimateSpawn(entity, coord.x, coord.y);
+
+            if (!dontAnimate)
+                AnimateSpawn(entity, coord.x, coord.y);
 
             return entity;
         }
