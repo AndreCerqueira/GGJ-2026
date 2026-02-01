@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14477d0f-ba43-49a7-b3af-c22614c2b999" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Base/MaskEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Base/MaskEffect.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/TeleportMaskEffect.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/TeleportMaskEffect.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-2026/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +28,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Base/PlayerMaskDisplay.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/JackOLanternEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/PlagueDoctorMaskEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/RabbitMaskEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/Effects/TeleportMaskEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/PlayerMaskController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/Masks/PlayerMaskDisplayUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Andre/Scripts/MoveCounterViewUI.cs" root0="FORCE_HIGHLIGHTING" />

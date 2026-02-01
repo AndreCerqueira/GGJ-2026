@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: NewRabbitEffect
   m_EditorClassIdentifier: Assembly-CSharp::Andre.Scripts.Masks.RabbitMaskEffect
   _maskSprite: {fileID: 21300000, guid: 8db1f50d43474fe4987759d3b5cc92a2, type: 3}
-  _duration: 3
+  _duration: 2
   _extraMoves: 2
