@@ -6,6 +6,7 @@ using Andre.Scripts.Toasts;
 using Andre.Scripts.UI;
 using MoreMountains.Feedbacks;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public enum GameState
 {
@@ -75,11 +76,16 @@ public class GameSystem : MonoBehaviour
             GameObject startGameFeedbackGO = GameObject.Find("START_GAME_FEEDBACK");
             MMF_Player mmfPlayer = startGameFeedbackGO.GetComponent<MMF_Player>();
             mmfPlayer.PlayFeedbacks();
+
+            DOVirtual.DelayedCall(1f, () =>
+            {
+                AreaViewCreator areaViewCreator = GameObject.FindFirstObjectByType<AreaViewCreator>();
+                areaViewCreator.Initialize();
+            });
         }
+
         if (Instance != null && Instance != this)
         {
-            
-
             Destroy(gameObject);
             return;
         }
@@ -206,12 +212,9 @@ public class GameSystem : MonoBehaviour
 
         StopAllCoroutines();
         
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-
-        //GameObject startGameFeedbackGO = GameObject.Find("START_GAME_FEEDBACK");
-        //MMF_Player mmfPlayer = startGameFeedbackGO.GetComponent<MMF_Player>();
-        //mmfPlayer.PlayFeedbacks();
+        GameObject startGameFeedbackGO = GameObject.Find("RELOAD_SCENE_FEEDBACK");
+        MMF_Player mmfPlayer = startGameFeedbackGO.GetComponent<MMF_Player>();
+        mmfPlayer.PlayFeedbacks();
     }
 
     public void DeadScreen()

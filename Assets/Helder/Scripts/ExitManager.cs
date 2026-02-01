@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class ExitManager : MonoBehaviour
 {
-    private bool player1Saved = false;
-    private bool player2Saved = false;
+    private static bool player1Saved = false;
+    private static bool player2Saved = false;
 
     private void OnTriggerEnter(Collider other)
     {
