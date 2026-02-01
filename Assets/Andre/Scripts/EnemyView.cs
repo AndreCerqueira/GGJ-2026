@@ -191,7 +191,7 @@ namespace Andre.Scripts
             }
         }
 
-        private void MoveToArea(AreaView targetArea)
+        public void MoveToArea(AreaView targetArea)
         {
             if (IsBlockedByObstacle(targetArea)) return;
 
@@ -209,7 +209,7 @@ namespace Andre.Scripts
             transform.DOLocalMove(Vector3.zero, MOVE_DURATION).SetEase(Ease.OutQuad);
         }
 
-        private PlayerView GetNearestPlayer(Vector2Int currentCoord)
+        public PlayerView GetNearestPlayer(Vector2Int currentCoord)
         {
             PlayerView nearest = null;
             var minDistance = float.MaxValue;
@@ -304,7 +304,7 @@ namespace Andre.Scripts
             lockedSpacesAI.Add(newLockSpaceGO);
         }
 
-        private bool IsValidMove(Vector2Int coord)
+        public bool IsValidMove(Vector2Int coord)
         {
             if (!GridSystem.Instance.TryGetArea(coord, out var area))
                 return false;

@@ -5561,6 +5561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e098453fdff375145910468533f33921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EventSystem
+  _eventToastPreset: {fileID: 11400000, guid: ea2b114bc7ef3624697a8acd8b1afb06, type: 2}
 --- !u!1 &541158926
 GameObject:
   m_ObjectHideFlags: 0
