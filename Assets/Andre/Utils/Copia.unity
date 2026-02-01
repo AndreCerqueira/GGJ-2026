@@ -20,8 +20,8 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.15337606, g: 0.20754719, b: 0.19614275, a: 1}
-  m_AmbientEquatorColor: {r: 0.121138304, g: 0.14093193, b: 0.15723258, a: 1}
+  m_AmbientSkyColor: {r: 0.33918744, g: 0.44025147, b: 0.4214014, a: 1}
+  m_AmbientEquatorColor: {r: 0.76148087, g: 0.8210893, b: 0.8679245, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 0
   m_AmbientMode: 1
@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 2a92d363ee5e1fe4b9b1d41bd83a056e, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -1710,7 +1710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a83d2f7ae04ab6f4f99b0d85377be998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.ProbeVolumePerSceneData
-  serializedBakingSet: {fileID: 0}
+  serializedBakingSet: {fileID: 11400000, guid: 281b11adaaf243040bc7671c01c20b59, type: 2}
   sceneGUID: 9ef9ba85888086e4dabdd156c21b2039
   obsoleteAsset: {fileID: 0}
   obsoleteCellSharedDataAsset: {fileID: 0}
@@ -2025,7 +2025,7 @@ MonoBehaviour:
   lowestSubdivLevelOverride: 0
   highestSubdivLevelOverride: 7
   overridesSubdivLevels: 0
-  mightNeedRebaking: 1
+  mightNeedRebaking: 0
   cachedTransform:
     e00: 0.36837837
     e01: 0
@@ -2201,9 +2201,6 @@ MonoBehaviour:
   _maskEffects:
   - {fileID: 11400000, guid: c9825512955bc5f49835dc091c594264, type: 2}
   - {fileID: 11400000, guid: 0f3500be98660ad4b8074aca51a7870a, type: 2}
-  - {fileID: 11400000, guid: 82f65aeccd50e4f439268d4ddbce5999, type: 2}
-  - {fileID: 11400000, guid: 1edd86ff4ca395c45b7db57523d07ead, type: 2}
-  - {fileID: 11400000, guid: c8eddfeed6f29db45a14e7567f9c1bb2, type: 2}
   _maxMasks: 5
 --- !u!1 &278255091
 GameObject:
@@ -3868,175 +3865,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1 &392684029
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 392684030}
-  - component: {fileID: 392684033}
-  - component: {fileID: 392684032}
-  - component: {fileID: 392684031}
-  m_Layer: 5
-  m_Name: Title (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &392684030
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392684029}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6930783, y: 1.6930783, z: 1.6930783}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1064447643}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -12, y: -97}
-  m_SizeDelta: {x: 0, y: 154.547}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &392684031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392684029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8ace8ced0e81c847968cdca0aeda757, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Febucci.TextAnimator.TMP.Runtime::Febucci.UI.TextAnimator_TMP
-  typewriterStartsAutomatically: 0
-  animationLoop: 0
-  timeScale: 0
-  _text: '[INSERT GAME NAME]'
-  useDynamicScaling: 1
-  referenceFontSize: 10
-  isResettingTimeOnNewText: 1
-  useDefaultDatabases: 1
-  databaseBehaviors: {fileID: 11400000, guid: e7100630128e1f24caeea4474a5fd0a5, type: 2}
-  databaseAppearances: {fileID: 11400000, guid: 1082b90eece3c584c9a57aa30de11073, type: 2}
-  useDefaultStyleSheet: 1
-  styleSheet: {fileID: 0}
-  databaseActions: {fileID: 11400000, guid: 2db0ee5eccd69de4b84ee00f9401ae3e, type: 2}
-  defaultAppearancesTags:
-  - size
-  defaultDisappearancesTags:
-  - fade
-  defaultBehaviorsTags: []
-  defaultTagsMode: 0
---- !u!114 &392684032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392684029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: <shake a=0.1 f=0.1>Night</shake>
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 388fc615b5c5492409385e9eceed82dc, type: 2}
-  m_sharedMaterial: {fileID: 7125205774668451888, guid: 388fc615b5c5492409385e9eceed82dc, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 110.2
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 110.2
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &392684033
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392684029}
-  m_CullTransparentMesh: 1
 --- !u!1 &402353269
 GameObject:
   m_ObjectHideFlags: 0
@@ -7637,175 +7465,6 @@ Transform:
   - {fileID: 1520921206}
   m_Father: {fileID: 287157618}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &991241746
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 991241747}
-  - component: {fileID: 991241750}
-  - component: {fileID: 991241749}
-  - component: {fileID: 991241748}
-  m_Layer: 5
-  m_Name: Title (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &991241747
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 991241746}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8252131, y: 0.8252131, z: 0.8252131}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1064447643}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -13, y: 65}
-  m_SizeDelta: {x: 0, y: 154.547}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &991241748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 991241746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8ace8ced0e81c847968cdca0aeda757, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Febucci.TextAnimator.TMP.Runtime::Febucci.UI.TextAnimator_TMP
-  typewriterStartsAutomatically: 0
-  animationLoop: 0
-  timeScale: 0
-  _text: '[INSERT GAME NAME]'
-  useDynamicScaling: 1
-  referenceFontSize: 10
-  isResettingTimeOnNewText: 1
-  useDefaultDatabases: 1
-  databaseBehaviors: {fileID: 11400000, guid: e7100630128e1f24caeea4474a5fd0a5, type: 2}
-  databaseAppearances: {fileID: 11400000, guid: 1082b90eece3c584c9a57aa30de11073, type: 2}
-  useDefaultStyleSheet: 1
-  styleSheet: {fileID: 0}
-  databaseActions: {fileID: 11400000, guid: 2db0ee5eccd69de4b84ee00f9401ae3e, type: 2}
-  defaultAppearancesTags:
-  - size
-  defaultDisappearancesTags:
-  - fade
-  defaultBehaviorsTags: []
-  defaultTagsMode: 0
---- !u!114 &991241749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 991241746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: <shake a=0.1 f=0.1>Halloween</shake>
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 388fc615b5c5492409385e9eceed82dc, type: 2}
-  m_sharedMaterial: {fileID: 7125205774668451888, guid: 388fc615b5c5492409385e9eceed82dc, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 110.2
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 110.2
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &991241750
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 991241746}
-  m_CullTransparentMesh: 1
 --- !u!1 &1002720422
 GameObject:
   m_ObjectHideFlags: 0
@@ -8174,8 +7833,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1859635894}
-  - {fileID: 991241747}
-  - {fileID: 392684030}
   - {fileID: 2078394903}
   - {fileID: 1964933112}
   - {fileID: 821580792}
@@ -9049,15 +8706,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6317672751797125516, guid: 9311617b76dd8d049b198314d66ddeb5, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.5212874
+      value: 0.48079583
       objectReference: {fileID: 0}
     - target: {fileID: 6317672751797125516, guid: 9311617b76dd8d049b198314d66ddeb5, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.5283019
+      value: 0.49056602
       objectReference: {fileID: 0}
     - target: {fileID: 6317672751797125516, guid: 9311617b76dd8d049b198314d66ddeb5, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.49673668
+      value: 0.46125546
       objectReference: {fileID: 0}
     - target: {fileID: 6317672751797125516, guid: 9311617b76dd8d049b198314d66ddeb5, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.atime1
@@ -13022,14 +12679,14 @@ RectTransform:
   m_GameObject: {fileID: 1859635893}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1419367, y: 1.1419367, z: 1.1419367}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1064447643}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -11, y: 168}
+  m_AnchoredPosition: {x: 0, y: 135.10399}
   m_SizeDelta: {x: 0, y: 154.547}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1859635895
@@ -13083,10 +12740,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <shake a=0.1 f=0.1>Survive</shake>
+  m_text: <shake a=0.2 f=0.2>Survive Halloween Night</shake>
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 388fc615b5c5492409385e9eceed82dc, type: 2}
-  m_sharedMaterial: {fileID: 7125205774668451888, guid: 388fc615b5c5492409385e9eceed82dc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2032339f567bde146b32a51cb1425adf, type: 2}
+  m_sharedMaterial: {fileID: 21694689038030200, guid: 2032339f567bde146b32a51cb1425adf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13110,7 +12767,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 110.2
+  m_fontSize: 81.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

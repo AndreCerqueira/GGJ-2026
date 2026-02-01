@@ -277,7 +277,7 @@ MonoBehaviour:
   _lives: 1
   _tombstonePrefab: {fileID: 7277841207646078753, guid: 9d970bf049d920b4bb846a5944c22057, type: 3}
   _playerPrefabForRespawn: {fileID: 6312771916335996498}
-  id: 2
+  _deadSprite: {fileID: 509194653, guid: 9bce5163f655cec4b951c59c6e30c254, type: 3}
 --- !u!95 &5451060311896641634
 Animator:
   serializedVersion: 7
